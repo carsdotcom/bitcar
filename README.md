@@ -1,4 +1,4 @@
-# ![bitcar](https://git.cars.com/projects/MP/repos/bitcar/raw/resources/bitcar.png?at=refs%2Fheads%2Fmaster)
+# ![bitcar](https://raw.githubusercontent.com/carsdotcom/bitcar/master/resources/bitcar.png)
 
 > seemlessly jump between repos from the command line
 
