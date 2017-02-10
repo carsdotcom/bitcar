@@ -1,44 +1,53 @@
 # ![bitcar](https://raw.githubusercontent.com/carsdotcom/bitcar/master/resources/bitcar.png)
 
-> seemlessly jump between repos from the command line
+> Seemlessly jump between repos from the command line.
 
-# requirements
+## Requirements
 
    *  node 6.x.x or newer
    *  bash 3 or newer
 
 _zsh support coming soon..._
 
-# installation and setup
+## Installation & Setup
 
-    npm i -g bitcar
-    bitcar --setup
+```
+npm i -g bitcar
+bitcar --setup
+```
 
 **IMPORTANT: Now, start a new terminal session.**
 
+## Usage
 
-# usage
+### Initialize Cache
 
-## initialize cache
-
-    bitcar --init
+```
+bitcar --init
+```
 
 This is done automatically the first time you try and use bitcar, but you can also invoke it manually with the above command.
 
-## refresh cache
+### Refresh Cache
 
-    bitcar --refresh
+```
+bitcar --refresh
+```
 
-## search / clone / cd to repo
+### Search / Clone / Change Directory to Repo
 
-    bit {searchTerm}
+```
+bit {searchTerm}
+```
 
-## open repo in browser
+### Open Repo in Browser
 
-    bit --open {searchTerm}
+```
+bit --open {searchTerm}
+```
 
-`searchTerm` is optional. If no `searchTerm` is given, then bitcar will attempt to open the current directory's repo in the browser.
+The `searchTerm` argument is optional. If no `searchTerm` is given, then bitcar will attempt to open the current directory's repo in the browser.
 
-# license
+## license
 
 Apache 2.0

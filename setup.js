@@ -83,7 +83,10 @@ source $HOME/.bitcar/completions.sh
 
             return fs.commit(function (err) {
                 if (err) return reject(err)
-                console.log('bitcar setup was successful');
+                console.log('');
+                console.log('Bitcar setup was successful!');
+                console.log('Enter `. ~/.bash_profile` and hit enter, or start a new terminal for changes to take effect.');
+                console.log('Please note you MUST use the alias you chose during setup. Except for the `bitcar --setup` command you just ran, DO NOT use the `bitcar` command directly or the tool will not work.');
                 return resolve();
             });
         });

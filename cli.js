@@ -51,7 +51,7 @@ function cli(options) {
                 } else if (results.length) {
                     resultPromise = lib.getSourceResult(results[0]);
                 } else {
-                    throw new Error('No results');
+                    throw new Error('No results.');
                 }
                 if (options.open) {
                     return resultPromise.then(lib.openInBrowser).then(lib.maybeClone);
