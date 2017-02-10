@@ -56,8 +56,7 @@ function setup() {
 export BITCAR_ROOT_DIR='${answers.rootDir}'
 source $HOME/.bitcar/cli.sh
 source $HOME/.bitcar/completions.sh
-# end bitcar
-`
+# end bitcar`
             const configContent = {
                 sources: []
             };
@@ -78,8 +77,8 @@ source $HOME/.bitcar/completions.sh
             fs.copy(path.normalize(__dirname + '/dotfiles/strip_codes'), path.normalize(process.env.HOME + '/.bitcar/strip_codes'));
             fs.copy(path.normalize(process.env.HOME + '/.bash_profile'), path.normalize(process.env.HOME + '/.bash_profile.bkup'));
             const bashProfile = fs.read(path.normalize(process.env.HOME + '/.bash_profile'));
-            let cleanedProfile = bashProfile.replace(/\n# begin bitcar[\s\S]+# end bitcar\n/gm, '');
-            cleanedProfile = cleanedProfile + os.EOL + profileContent;
+            let cleanedProfile = bashProfile.replace(/\n# begin bitcar[\s\S]+# end bitcar/gm, '');
+            cleanedProfile = cleanedProfile + profileContent;
             fs.write(path.normalize(process.env.HOME + '/.bash_profile'), cleanedProfile);
 
             return fs.commit(function (err) {
