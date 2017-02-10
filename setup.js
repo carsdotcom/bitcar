@@ -4,6 +4,7 @@ const fs = require('./lib/fs');
 const path = require('path');
 const inquirer = require('inquirer');
 const os = require('os');
+const chalk = require('chalk');
 
 module.exports = setup;
 
@@ -85,8 +86,11 @@ source $HOME/.bitcar/completions.sh
                 if (err) return reject(err)
                 console.log('');
                 console.log('Bitcar setup was successful!');
-                console.log('Enter `. ~/.bash_profile` and hit enter, or start a new terminal for changes to take effect.');
-                console.log('Please note you MUST use the alias you chose during setup. Except for the `bitcar --setup` command you just ran, DO NOT use the `bitcar` command directly or the tool will not work.');
+                console.log('');
+                console.log(chalk.bold.inverse('Enter `. ~/.bash_profile` and hit enter, or start a new terminal for changes to take effect.'));
+                console.log('');
+                console.log(chalk.underline('Please note you MUST use the alias you chose during setup for the tool to work.'));
+                console.log(chalk.underline('Except for the setup command, DO NOT use the `bitcar` command directly'));
                 return resolve();
             });
         });
