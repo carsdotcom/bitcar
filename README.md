@@ -11,7 +11,7 @@ _zsh support coming soon..._
 
 ## installation and setup
 
-    npm i -g
+    npm i -g bitcar
     bitcar --setup
 
 IMPORTANT: Now, start a new terminal session.
