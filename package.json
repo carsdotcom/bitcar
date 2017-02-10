@@ -11,7 +11,7 @@
     "bitcar": "index.js"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./node_modules/.bin/mocha \"test/**/*.js\""
   },
   "contributors": [
     {
@@ -33,5 +33,12 @@
     "optimist": "^0.6.1",
     "rc": "^1.1.6",
     "simple-git": "^1.65.0"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "joi": "^10.2.2",
+    "mocha": "^3.2.0",
+    "sinon": "^1.17.7",
+    "sinon-chai": "^2.8.0"
   }
 }

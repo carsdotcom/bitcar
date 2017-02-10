@@ -1,0 +1,21 @@
+{
+    "git.cars.com": [
+        {
+            "name": "npm/chassisjs",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/chassisjs.git",
+            "html": "https://git.cars.com/projects/NPM/repos/chassisjs/browse"
+        }
+    ],
+    "github.com": [
+        {
+            "name": "carsdotcom/bitcar",
+            "clone": "https://github.com/carsdotcom/bitcar.git",
+            "html": "https://github.com/carsdotcom/bitcar"
+        },
+        {
+            "name": "machellerogden/dotfiles",
+            "clone": "https://github.com/machellerogden/dotfiles.git",
+            "html": "https://github.com/machellerogden/dotfiles"
+        }
+    ]
+}
