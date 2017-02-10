@@ -76,7 +76,7 @@ source $HOME/.bitcar/completions.sh
     fs.copy(path.normalize(process.env.HOME + '/.bash_profile'), path.normalize(process.env.HOME + '/.bash_profile.bkup'));
     const bashProfile = fs.read(path.normalize(process.env.HOME + '/.bash_profile'));
     let cleanedProfile = bashProfile.replace(/\n# begin bitcar[\s\S]+# end bitcar\n/gm, '');
-    cleanedProfile = cleanedProfile + os.EOL + profileContent);
+    cleanedProfile = cleanedProfile + os.EOL + profileContent;
     fs.write(path.normalize(process.env.HOME + '/.bash_profile'), cleanedProfile);
 
     fs.commit(function (err) {
