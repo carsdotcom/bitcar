@@ -1,13 +1,10 @@
 #!/usr/bin/env node
 const cli = require('./cli');
 const argv = require('optimist').argv;
+const setTarget = require('./lib/setTarget');
 
 cli(argv)
-    .then((sourceResult) => {
-        if (sourceResult && sourceResult.repoDir) {
-            console.log(sourceResult.repoDir);
-        }
-    })
+    .then(setTarget)
     .catch((err) => {
         console.log(err.message);
         process.exit(1);
