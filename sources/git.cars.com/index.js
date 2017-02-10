@@ -13,12 +13,12 @@ function bitbucketSourcePromise(config) {
             {
                 type: 'input',
                 name: 'username',
-                message: 'git.cars.com username:'
+                message: bitbucketConfig.host + ' username:'
             },
             {
                 type: 'password',
                 name: 'password',
-                message: 'git.cars.com password:'
+                message: bitbucketConfig.host + ' password:'
             }
         ]).then((answers) => {
             const auth = {

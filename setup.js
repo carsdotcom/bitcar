@@ -59,6 +59,7 @@ source $HOME/.bitcar/cli.sh
 source $HOME/.bitcar/completions.sh
 # end bitcar`
             const configContent = {
+                alias: answers.alias,
                 sources: []
             };
 
@@ -89,7 +90,7 @@ source $HOME/.bitcar/completions.sh
                 console.log('');
                 console.log(chalk.bold.inverse('Enter `. ~/.bash_profile` and hit enter, or start a new terminal for changes to take effect.'));
                 console.log('');
-                console.log(chalk.underline('Please note you MUST use the alias you chose during setup for the tool to work.'));
+                console.log(chalk.underline('Please note you MUST use the command name you chose during setup (`' + answers.alias + '`) for the tool to work.'));
                 console.log(chalk.underline('Except for the setup command, DO NOT use the `bitcar` command directly'));
                 return resolve();
             });
