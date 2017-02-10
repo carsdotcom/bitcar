@@ -3,6 +3,7 @@
 const fs = require('./lib/fs');
 const path = require('path');
 const inquirer = require('inquirer');
+const os = require('os');
 
 inquirer.prompt([
     {
@@ -74,7 +75,8 @@ source $HOME/.bitcar/completions.sh
     fs.copy(path.normalize(__dirname + '/dotfiles/strip_codes'), path.normalize(process.env.HOME + '/.bitcar/strip_codes'));
     fs.copy(path.normalize(process.env.HOME + '/.bash_profile'), path.normalize(process.env.HOME + '/.bash_profile.bkup'));
     const bashProfile = fs.read(path.normalize(process.env.HOME + '/.bash_profile'));
-    const cleanedProfile = bashProfile.replace(/\n# begin bitcar[\s\S]+# end bitcar\n/gm, profileContent);
+    let cleanedProfile = bashProfile.replace(/\n# begin bitcar[\s\S]+# end bitcar\n/gm, '');
+    cleanedProfile = cleanedProfile + os.EOL + profileContent);
     fs.write(path.normalize(process.env.HOME + '/.bash_profile'), cleanedProfile);
 
     fs.commit(function (err) {
