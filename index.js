@@ -23,7 +23,7 @@ function main(options) {
         searchTerm = options.open;
     } else if (options._ && options._[0]) {
         searchTerm = options._[0];
-    } else {
+    } else if (!options.completions) {
         searchTerm = _.takeRight(process.cwd().split(path.sep), 3).join(path.sep);
     }
 
