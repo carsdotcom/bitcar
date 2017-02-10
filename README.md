@@ -2,38 +2,43 @@
 
 > seemlessly jump between repos from the command line
 
-## requirements
+# requirements
 
    *  node 6.x.x or newer
    *  bash 3 or newer
 
 _zsh support coming soon..._
 
-## installation and setup
+# installation and setup
 
     npm i -g bitcar
     bitcar --setup
 
-IMPORTANT: Now, start a new terminal session.
+**IMPORTANT: Now, start a new terminal session.**
 
-    bit --init # or, instead of 'bit', you can use whatever alias you selected during setup
 
-**Please note:** `bitcar --setup` will append a few lines to your `~/.bash_profile`. You'll want to remove these lines if you ever need to run the setup again.
+# usage
 
-## usage
-
-### initialize cache
+## initialize cache
 
     bitcar --init
 
-### refresh cache
+This is done automatically the first time you try and use bitcar, but you can also invoke it manually with the above command.
+
+## refresh cache
 
     bitcar --refresh
 
-### search / clone / cd to repo
+## search / clone / cd to repo
 
-    bit {searchTerm} # or, instead of 'bit', you can use whatever alias you selected during setup
+    bit {searchTerm}
 
-## license
+## open repo in browser
+
+    bit --open {searchTerm}
+
+`searchTerm` is optional. If no `searchTerm` is given, then bitcar will attempt to open the current directory's repo in the browser.
+
+# license
 
 Apache 2.0
