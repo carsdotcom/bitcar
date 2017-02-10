@@ -13,8 +13,7 @@ function cli(options) {
     let searchTerm;
 
     if (options.setup) {
-        require('./setup');
-        return Promise.resolve(null);
+        return require('./setup')();
     }
 
     if (_.isString(options.completions)) {
