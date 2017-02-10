@@ -1,6 +1,6 @@
 {
   "name": "bitcar",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "Seemlessly jump between repos from the command line.",
   "repository": {
     "type": "git",
