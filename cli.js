@@ -12,6 +12,11 @@ module.exports = cli;
 function cli(options) {
     let searchTerm;
 
+    if (options.version || options.v) {
+        console.log(require('./package.json').version);
+        process.exit(0);
+    }
+
     if (options.setup) {
         return require('./setup')();
     }
@@ -35,7 +40,8 @@ function cli(options) {
         const sourceDataPromise = lib.getSourceData();
         const pathsPromise = sourceDataPromise.then(lib.getPaths).filter(searchFilter);
         if (options.completions) {
-            return pathsPromise.map(_.ary(console.log, 1));
+            return pathsPromise.map((repoPath) => _.tail(repoPath.split(path.sep)).join(path.sep))
+                .each(_.ary(console.log, 1));
         } else {
             return pathsPromise.then((results) => {
                 let resultPromise;
