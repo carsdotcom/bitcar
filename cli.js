@@ -28,7 +28,7 @@ function cli(options) {
     } else if (options._ && options._[0]) {
         searchTerm = options._[0];
     } else if (!options.completions) {
-        searchTerm = _.takeRight(process.cwd().split(path.sep), 3).join(path.sep);
+        searchTerm = '^' + _.takeRight(process.cwd().split(path.sep), 3).join(path.sep) + '$';
     }
 
     if (options.init) {
