@@ -48,6 +48,13 @@ bit --open {searchTerm}
 
 The `searchTerm` argument is optional. If no `searchTerm` is given, then bitcar will attempt to open the current directory's repo in the browser.
 
+## Github personal access token settings
+
+If you'd like to use bitcar with your private repos, you'll need to setup a
+[personal access token on your github
+account](https://github.com/settings/tokens/new). Please ensure you've set the
+correct scope for this token. The `repo` scope should be fully enabled.
+
 ## license
 
 Apache 2.0
