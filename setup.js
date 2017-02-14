@@ -29,10 +29,23 @@ function setup() {
             default: true
         },
         {
+            type: 'confirm',
+            name: 'addGithubPrivateAccess',
+            message: 'Would you like to access your private repos on github?',
+            default: true,
+            when: (answers) => answers.addGithub
+        },
+        {
+            type: 'input',
+            name: 'githubAccessToken',
+            message: 'Please enter your private access token (generate one at https://github.com/settings/tokens/new):',
+            when: (answers) => answers.addGithubPrivateAccess
+        },
+        {
             type: 'input',
             name: 'githubUsernames',
-            message: 'Please type the github usernames for the repos you want bitcar to track (comma separated, no spaces):',
-            default: 'carsdotcom,machellerogden',
+            message: 'Please type the github usernames other than your own which you want bitcar to track (comma separated, no spaces):',
+            default: 'carsdotcom',
             when: (answers) => answers.addGithub
         },
         {
@@ -64,7 +77,7 @@ source $HOME/.bitcar/completions.sh
             };
 
             if (answers.addGithub) {
-                configContent.sources.push({ type: 'github', host: 'github.com', usernames: answers.githubUsernames.split(',') });
+                configContent.sources.push({ type: 'github', host: 'github.com', accessToken: answers.githubAccessToken, usernames: answers.githubUsernames.split(',') });
             }
 
             if (answers.addBitbucketServer) {
