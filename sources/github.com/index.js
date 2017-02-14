@@ -69,10 +69,10 @@ function githubSourcePromise(config) {
     const githubConfig = _.find(config.sources, { type: 'github' });
     let resultPromises = [];
     if (githubConfig && githubConfig.accessToken) {
-        resultPromises.push(getOwnRepos(githubConfig).then((data) => { console.log('data:', data);return data; }));
+        resultPromises.push(getOwnRepos(githubConfig));
     }
     if (githubConfig && githubConfig.usernames) {
-        //resultPromises = resultPromises.concat(getReposFromUsernames(githubConfig));
+        resultPromises = resultPromises.concat(getReposFromUsernames(githubConfig));
     } else {
         return Promise.resolve([]);
     }

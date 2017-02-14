@@ -42,11 +42,17 @@ function setup() {
             when: (answers) => answers.addGithubPrivateAccess
         },
         {
+            type: 'confirm',
+            name: 'addOtherGithubUsernames',
+            message: 'Would you like to track public repos from specific Github users?',
+            default: true,
+            when: (answers) => answers.addGithub
+        },
+        {
             type: 'input',
             name: 'githubUsernames',
-            message: 'Please type the github usernames OTHER THAN YOUR OWN which you want bitcar to track (comma separated, no spaces):',
-            default: '',
-            when: (answers) => answers.addGithub
+            message: 'Please type the github usernames which you want bitcar to track (comma separated, no spaces):',
+            when: (answers) => answers.addOtherGithubUsernames
         },
         {
             type: 'confirm',
