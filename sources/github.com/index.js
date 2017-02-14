@@ -73,7 +73,8 @@ function githubSourcePromise(config) {
     }
     if (githubConfig && githubConfig.usernames) {
         resultPromises = resultPromises.concat(getReposFromUsernames(githubConfig));
-    } else {
+    }
+    if (!resultPromises.length) {
         return Promise.resolve([]);
     }
     return Promise.all(resultPromises);

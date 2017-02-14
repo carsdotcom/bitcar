@@ -45,7 +45,7 @@ function setup() {
             type: 'confirm',
             name: 'addOtherGithubUsernames',
             message: 'Would you like to track public repos from specific Github users?',
-            default: true,
+            default: false,
             when: (answers) => answers.addGithub
         },
         {
@@ -83,7 +83,11 @@ source $HOME/.bitcar/completions.sh
             };
 
             if (answers.addGithub) {
-                configContent.sources.push({ type: 'github', host: 'github.com', accessToken: answers.githubAccessToken, usernames: answers.githubUsernames.split(',') });
+                let githubConfig = { type: 'github', host: 'github.com', accessToken: answers.githubAccessToken };
+                if (answers.githubUsernames) {
+                    githubConfig.usernames = answers.githubUsernames.split(',');
+                }
+                configContent.sources.push(githubConfig);
             }
 
             if (answers.addBitbucketServer) {
