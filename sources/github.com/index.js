@@ -9,7 +9,7 @@ function githubSourcePromise(config) {
     const githubConfig = _.find(config.sources, { type: 'github' });
     let resultPromises = [];
     if (githubConfig && githubConfig.accessToken) {
-        let reqUrl = `https://api.github.com/user/repos?access_token=${githubConfig.accessToken}`;
+        let reqUrl = `https://api.github.com/user/repos?access_token=${githubConfig.accessToken}&per_page=100`;
         resultPromises = resultPromises.concat(axios.get(reqUrl).then((res) => {
             const sources = _.map(res.data, (item) => {
                 const result = {};
