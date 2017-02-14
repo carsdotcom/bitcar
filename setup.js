@@ -44,8 +44,8 @@ function setup() {
         {
             type: 'input',
             name: 'githubUsernames',
-            message: 'Please type the github usernames other than your own which you want bitcar to track (comma separated, no spaces):',
-            default: 'carsdotcom',
+            message: 'Please type the github usernames OTHER THAN YOUR OWN which you want bitcar to track (comma separated, no spaces):',
+            default: 'carsdotcom,machellerogden',
             when: (answers) => answers.addGithub
         },
         {
