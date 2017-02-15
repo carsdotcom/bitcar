@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 const cli = require('./cli');
-const argv = require('optimist').argv;
+const argv = require('./argv');
 const setTarget = require('./lib/setTarget');
 
 cli(argv)

@@ -5,14 +5,13 @@ const inquirer = require('inquirer');
 const path = require('path');
 
 const refresh = _.partial(lib.getSourceData, true);
-const init = refresh;
 
 module.exports = cli;
 
 function cli(options) {
     let searchTerm;
 
-    if (options.version || options.v) {
+    if (options.version) {
         console.log(require('./package.json').version);
         process.exit(0);
     }
@@ -31,9 +30,7 @@ function cli(options) {
         searchTerm = '^' + _.takeRight(process.cwd().split(path.sep), 3).join(path.sep) + '$';
     }
 
-    if (options.init) {
-        return init();
-    } else if (options.refresh) {
+    if (options.refresh) {
         return refresh();
     } else {
         const searchFilter = (v) => (new RegExp(searchTerm)).test(v);
