@@ -11,7 +11,8 @@ const inquirer = require('inquirer');
 const path = require('path');
 
 // store cache fixture in mem-fs
-fs.writeJSON(path.normalize(__dirname + '/../sources/.cache.json'), require('./fixtures/cache.json'), null, 4);
+const CACHE_PATH = path.normalize(process.env.HOME + '/.bitcar/cache.json');
+fs.writeJSON(CACHE_PATH, require('./fixtures/cache.json'), null, 4);
 
 const schemas = require('./schemas');
 const mocks = require('./mocks');
