@@ -64,7 +64,7 @@ function setup() {
             type: 'input',
             name: 'bitbucketHost',
             message: 'Please type the Bitbucket domain which contains repos you want bitcar to track:',
-            default: 'git.cars.com',
+            default: 'bitbucket.org',
             when: (answers) => answers.addBitbucketServer
         }
     ]).then((answers) => {
