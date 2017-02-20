@@ -63,8 +63,7 @@ function setup() {
         {
             type: 'input',
             name: 'bitbucketHost',
-            message: 'Please type the Bitbucket domain which contains repos you want bitcar to track:',
-            default: 'git.cars.com',
+            message: 'Please type the Bitbucket Server domain which contains repos you want bitcar to track (NOTE: there is no support for bitbucket.org at this time):',
             when: (answers) => answers.addBitbucketServer
         }
     ]).then((answers) => {
@@ -91,7 +90,7 @@ source $HOME/.bitcar/completions.sh
             }
 
             if (answers.addBitbucketServer) {
-                configContent.sources.push({ type: 'bitbucketServer', host: answers.bitbucketHost });
+                configContent.sources.push({ type: 'bitbucket-server', host: answers.bitbucketHost });
             }
 
             const mkdirp = require('mkdirp');

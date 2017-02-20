@@ -1,3 +1,3 @@
 'use strict';
-exports['git.cars.com'] = require('./git.cars.com');
+exports['bitbucket-server'] = require('./bitbucket-server');
 exports['github.com'] = require('./github.com');
