@@ -99,11 +99,22 @@ source $HOME/.bitcar/completions.sh
             fs.copyTpl(path.normalize(__dirname + '/dotfiles/cli.sh'), path.normalize(process.env.HOME + '/.bitcar/cli.sh'), answers);
             fs.copyTpl(path.normalize(__dirname + '/dotfiles/completions.sh'), path.normalize(process.env.HOME + '/.bitcar/completions.sh'), answers);
             fs.copy(path.normalize(__dirname + '/dotfiles/strip_codes'), path.normalize(process.env.HOME + '/.bitcar/strip_codes'));
-            fs.copy(path.normalize(process.env.HOME + '/.bash_profile'), path.normalize(process.env.HOME + '/.bash_profile.bkup'));
-            const bashProfile = fs.read(path.normalize(process.env.HOME + '/.bash_profile'));
-            let cleanedProfile = bashProfile.replace(/\n# begin bitcar[\s\S]+# end bitcar/gm, '');
-            cleanedProfile = cleanedProfile + profileContent;
-            fs.write(path.normalize(process.env.HOME + '/.bash_profile'), cleanedProfile);
+
+            const SHELL = process.env.SHELL;
+            if (SHELL.match(/bash/)) {
+                fs.copy(path.normalize(process.env.HOME + '/.bash_profile'), path.normalize(process.env.HOME + '/.bash_profile.bkup'));
+                let profile = fs.read(path.normalize(process.env.HOME + '/.bash_profile'));
+                let updatedProfile = cleanProfile(profile) + profileContent;
+                fs.write(path.normalize(process.env.HOME + '/.bash_profile'), updatedProfile);
+            } else if (SHELL.match(/zsh/)) {
+                fs.copy(path.normalize(process.env.HOME + '/.zshrc'), path.normalize(process.env.HOME + '/.zshrc.bkup'));
+                let profile = fs.read(path.normalize(process.env.HOME + '/.zshrc'));
+                let updatedProfile = cleanProfile(profile) + profileContent;
+                fs.write(path.normalize(process.env.HOME + '/.zshrc'), updatedProfile);
+            } else {
+                console.log('unsupported shell');
+                process.exit(1);
+            }
 
             return fs.commit(function (err) {
                 if (err) return reject(err)
@@ -118,4 +129,8 @@ source $HOME/.bitcar/completions.sh
             });
         });
     });
+}
+
+function cleanProfile(profile) {
+    return profile.replace(/\n# begin bitcar[\s\S]+# end bitcar/gm, '');
 }
