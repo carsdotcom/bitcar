@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 function bitcar_cli() {
-    local root="${BITCAR_ROOT_DIR:-"$HOME/bitcar-repos"}"
-    [ -z "$1" ] && cd "$root" && return
+    local workspace_dir="${BITCAR_WORKSPACE_DIR:-"$HOME/bitcar-repos"}"
+    [ -z "$1" ] && cd "$workspace_dir" && return
     local target="$HOME/.bitcar/.bitcar_target"
     bitcar "$@" && if [ -f "$target" ]; then cd "$(cat "$target")" && rm "$target"; fi
 }

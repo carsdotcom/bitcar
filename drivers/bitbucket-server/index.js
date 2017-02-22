@@ -7,7 +7,7 @@ const inquirer = require('inquirer');
 module.exports = bitbucketSourcePromise;
 
 function bitbucketSourcePromise(config) {
-    const bitbucketConfig = _.find(config.sources, { type: 'bitbucket-server' });
+    const bitbucketConfig = _.find(config.drivers, { type: 'bitbucket-server' });
     if (bitbucketConfig && bitbucketConfig.host) {
         return inquirer.prompt([
             {

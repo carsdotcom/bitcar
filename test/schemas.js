@@ -4,7 +4,7 @@ const Joi = require('joi');
 
 exports.setupPrompt = Joi.array().items(Joi.object({
     type: Joi.string().required(),
-    name: Joi.string().valid(['alias', 'rootDir', 'addGithub', 'githubUsernames', 'addBitbucketServer', 'bitbucketHost']).required(),
+    name: Joi.string().valid(['alias', 'workspaceDir', 'addGithub', 'githubUsernames', 'addBitbucketServer', 'bitbucketHost']).required(),
     message: Joi.string().required(),
     default: Joi.any().optional()
 }));

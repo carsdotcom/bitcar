@@ -3,7 +3,7 @@ const path = require('path');
 
 exports.setupAnswers = {
     alias: 'bitcar',
-    rootDir: path.normalize('./.bitcar-test'),
+    workspaceDir: path.normalize('./.bitcar-test'),
     addGithub: true,
     githubUsernames: [ 'carsdotcom' ],
     addBitbucketServer: true,

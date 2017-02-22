@@ -18,27 +18,37 @@ function setup() {
         },
         {
             type: 'input',
-            name: 'rootDir',
-            message: 'Enter the root directory where bitcar should store your repos:',
-            default: path.normalize(process.env.HOME + '/bitcar-repos')
+            name: 'workspaceDir',
+            message: 'Enter a directory for the bitcar workspace:',
+            default: path.normalize(process.env.HOME + '/repos')
         },
         {
-            type: 'confirm',
-            name: 'addGithub',
-            message: 'Would you like to add github support?',
-            default: true
+            type: 'checkbox',
+            name: 'drivers',
+            message: 'Which services to use with bitcar:',
+            choices: [
+                {
+                    name: 'GitHub',
+                    value: 'github'
+                },
+                {
+                    name: 'Bitbucket Server',
+                    value: 'bitbucket-server'
+                }
+            ]
+
         },
         {
             type: 'confirm',
             name: 'addGithubPrivateAccess',
-            message: 'Would you like to access your private repos on github?',
+            message: 'Do you want to access your private repos on github?',
             default: true,
-            when: (answers) => answers.addGithub
+            when: (answers) => answers.drivers.indexOf('github') >= 0
         },
         {
             type: 'input',
             name: 'githubAccessToken',
-            message: 'Please enter your private access token (generate one at https://github.com/settings/tokens/new):',
+            message: 'Please enter your github.com private access token (generate one at https://github.com/settings/tokens/new):',
             when: (answers) => answers.addGithubPrivateAccess
         },
         {
@@ -46,7 +56,7 @@ function setup() {
             name: 'addOtherGithubUsernames',
             message: 'Would you like to track public repos from specific Github users?',
             default: false,
-            when: (answers) => answers.addGithub
+            when: (answers) => answers.drivers.indexOf('github') >= 0
         },
         {
             type: 'input',
@@ -55,16 +65,10 @@ function setup() {
             when: (answers) => answers.addOtherGithubUsernames
         },
         {
-            type: 'confirm',
-            name: 'addBitbucketServer',
-            message: 'Would you like to add Bitbucket Server support?',
-            default: true
-        },
-        {
             type: 'input',
-            name: 'bitbucketHost',
-            message: 'Please type the Bitbucket Server domain which contains repos you want bitcar to track (NOTE: there is no support for bitbucket.org at this time):',
-            when: (answers) => answers.addBitbucketServer
+            name: 'bitbucketServerHost',
+            message: 'Please enter your Bitbucket Server domain (NOTE: there is no support for bitbucket.org at this time):',
+            when: (answers) => answers.drivers.indexOf('bitbucket-server') >= 0
         }
     ]).then((answers) => {
         return new Promise((resolve, reject) => {
@@ -72,25 +76,25 @@ function setup() {
 
             const profileContent = `
 # begin bitcar
-export BITCAR_ROOT_DIR='${answers.rootDir}'
+export BITCAR_WORKSPACE_DIR='${answers.workspaceDir}'
 source $HOME/.bitcar/cli.sh
 source $HOME/.bitcar/completions.sh
-# end bitcar`
+# end bitcar`;
             const configContent = {
                 alias: answers.alias,
-                sources: []
+                drivers: []
             };
 
-            if (answers.addGithub) {
+            if (answers.drivers.indexOf('github') >= 0) {
                 let githubConfig = { type: 'github', host: 'github.com', accessToken: answers.githubAccessToken };
                 if (answers.githubUsernames) {
                     githubConfig.usernames = answers.githubUsernames.split(',');
                 }
-                configContent.sources.push(githubConfig);
+                configContent.drivers.push(githubConfig);
             }
 
-            if (answers.addBitbucketServer) {
-                configContent.sources.push({ type: 'bitbucket-server', host: answers.bitbucketHost });
+            if (answers.drivers.indexOf('bitbucket-server') >= 0) {
+                configContent.drivers.push({ type: 'bitbucket-server', host: answers.bitbucketServerHost });
             }
 
             const mkdirp = require('mkdirp');
@@ -117,7 +121,7 @@ source $HOME/.bitcar/completions.sh
             }
 
             return fs.commit(function (err) {
-                if (err) return reject(err)
+                if (err) return reject(err);
                 console.log('');
                 console.log('Bitcar setup was successful!');
                 console.log('');

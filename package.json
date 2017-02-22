@@ -11,7 +11,12 @@
     "bitcar": "index.js"
   },
   "scripts": {
-    "test": "./node_modules/.bin/mocha \"test/**/*.js\""
+    "lint": "./node_modules/.bin/eslint .",
+    "test": "./node_modules/.bin/mocha \"test/**/*.js\"",
+    "changelog": "./node_modules/.bin/github-changes -o carsdotcom -r bitcar",
+    "generate-and-stage-changelog": "npm run changelog && git add -A",
+    "coverage": "rm -rf coverage && node node_modules/.bin/istanbul cover -x \"test/**/*.js\" --dir=\"coverage\" --root=\"./\" node_modules/.bin/_mocha -- \"test/**/*.js\"",
+    "check-coverage": "npm run coverage && ./node_modules/.bin/istanbul check-coverage --root=\"./coverage\" --statement 85 --function 85 --branch 85"
   },
   "contributors": [
     {
@@ -37,9 +42,19 @@
   },
   "devDependencies": {
     "chai": "^3.5.0",
+    "eslint": "^3.16.0",
+    "github-changes": "^1.0.4",
+    "istanbul": "^0.4.5",
     "joi": "^10.2.2",
     "mocha": "^3.2.0",
+    "pre-commit": "^1.2.2",
     "sinon": "^1.17.7",
     "sinon-chai": "^2.8.0"
-  }
+  },
+  "pre-commit": [
+    "lint",
+    "test",
+    "check-coverage",
+    "generate-and-stage-changelog"
+  ]
 }

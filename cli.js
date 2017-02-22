@@ -33,9 +33,8 @@ function cli(options) {
     if (options.refresh) {
         return refresh();
     } else {
-        const searchFilter = (v) => (new RegExp(searchTerm)).test(v);
         const sourceDataPromise = lib.getSourceData();
-        const pathsPromise = sourceDataPromise.then(lib.getPaths).filter(searchFilter);
+        const pathsPromise = sourceDataPromise.then(lib.getPaths).filter((v) => (new RegExp(searchTerm)).test(v));
         if (options.completions) {
             return pathsPromise.map((repoPath) => _.tail(repoPath.split(path.sep)).join(path.sep))
                 .each(_.ary(console.log, 1));

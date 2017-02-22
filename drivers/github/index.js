@@ -6,20 +6,16 @@ const Promise = require('bluebird');
 module.exports = githubSourcePromise;
 
 function parseLinkHeader(header) {
-    if (header.length === 0) {
-        throw new Error("input must not be of zero length");
-    }
-    var parts = header.split(',');
-    var links = {};
-    for(var i=0; i<parts.length; i++) {
-        var section = parts[i].split(';');
-        if (section.length !== 2) {
-            throw new Error("section could not be split on ';'");
-        }
-        var url = section[0].replace(/<(.*)>/, '$1').trim();
-        var name = section[1].replace(/rel="(.*)"/, '$1').trim();
-        links[name] = url;
-    }
+    if (header.length === 0) throw new Error("input must not be of zero length");
+    const parts = header.split(',');
+    const links = _.reduce(parts, (acc, part) => {
+        const section = part.split(';');
+        if (section.length !== 2) throw new Error("section could not be split on ';'");
+        const url = section[0].replace(/<(.*)>/, '$1').trim();
+        const name = section[1].replace(/rel="(.*)"/, '$1').trim();
+        acc[name] = url;
+        return acc;
+    }, {});
     return links;
 }
 
@@ -41,7 +37,7 @@ function getOwnRepos(config) {
                 }
             }
             return all;
-        });
+        }).catch();
     }
     return getPage([], reqUrl);
 }
@@ -66,7 +62,7 @@ function getReposFromUsernames(config) {
 }
 
 function githubSourcePromise(config) {
-    const githubConfig = _.find(config.sources, { type: 'github' });
+    const githubConfig = _.find(config.drivers, { type: 'github' });
     let resultPromises = [];
     if (githubConfig && githubConfig.accessToken) {
         resultPromises.push(getOwnRepos(githubConfig));
