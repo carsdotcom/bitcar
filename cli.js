@@ -4,6 +4,7 @@ const _ = require('lodash');
 const inquirer = require('inquirer');
 const path = require('path');
 const Promise = require('bluebird');
+const workspaceDir = require('./lib/workspaceDir');
 
 const refresh = _.partial(lib.getSourceData, true);
 
@@ -57,7 +58,9 @@ function cli(options) {
                             }
                         ]).then((answers) => {
                             if (answers.confirm) {
-                                return Promise.resolve(repos).map(lib.maybeClone);
+                                return Promise.resolve(repos).map(lib.maybeClone).then(() => {
+                                    return { repoDir: workspaceDir };
+                                });
                             } else {
                                 throw new Error('Clone All Aborted.');
                             }

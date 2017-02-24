@@ -7,11 +7,6 @@ function bitcar_cli() {
        return
     fi
 
-    if [ "$1" == "--clone-all" ] || [ "$2" == "--clone-all" ]; then
-       bitcar "$@" && cd "$workspace_dir"
-       return
-    fi
-
     local target="$HOME/.bitcar/.bitcar_target"
     bitcar "$@" && if [ -f "$target" ]; then cd "$(cat "$target")" && rm "$target"; fi
 }
