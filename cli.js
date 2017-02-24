@@ -3,6 +3,7 @@ const lib = require('./lib');
 const _ = require('lodash');
 const inquirer = require('inquirer');
 const path = require('path');
+const Promise = require('bluebird');
 
 const refresh = _.partial(lib.getSourceData, true);
 
@@ -20,10 +21,14 @@ function cli(options) {
         return require('./setup')();
     }
 
-    if (_.isString(options.completions)) {
-        searchTerm = options.completions;
-    } else if (_.isString(options.open)) {
-        searchTerm = options.open;
+    if (_.isString(options.completions) || _.isString(options.open)) {
+        searchTerm = options.completions || options.open;
+    } else if (options['clone-all']) {
+        if (_.isString(options['clone-all'])) {
+            searchTerm = options['clone-all'];
+        } else {
+            searchTerm = '.*';
+        }
     } else if (options._ && options._[0]) {
         searchTerm = options._[0];
     } else if (!options.completions) {
@@ -41,7 +46,24 @@ function cli(options) {
         } else {
             return pathsPromise.then((results) => {
                 let resultPromise;
-                if (results.length > 1) {
+                if (results.length && options['clone-all']) {
+                    return Promise.all(_.map(results, lib.getSourceResult)).then((repos) => {
+                        return inquirer.prompt([
+                            {
+                                type: 'confirm',
+                                name: 'confirm',
+                                message: 'Are you sure you want to clone ' + repos.length + ' repos?',
+                                default: false
+                            }
+                        ]).then((answers) => {
+                            if (answers.confirm) {
+                                return Promise.resolve(repos).map(lib.maybeClone);
+                            } else {
+                                throw new Error('Clone All Aborted.');
+                            }
+                        });
+                    });
+                } else if (results.length > 1) {
                     resultPromise = inquirer.prompt([
                         {
                             type: 'list',
@@ -56,10 +78,11 @@ function cli(options) {
                     throw new Error('No results.');
                 }
                 if (options.open) {
-                    return resultPromise.then(lib.openInBrowser).then(lib.maybeClone);
+                    resultPromise = resultPromise.then(lib.openInBrowser).then(lib.maybeClone);
                 } else {
-                    return resultPromise.then(lib.maybeClone);
+                    resultPromise = resultPromise.then(lib.maybeClone);
                 }
+                return resultPromise;
             });
         }
     }
