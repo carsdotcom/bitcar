@@ -4,11 +4,15 @@ const expect = chai.expect;
 const sinon = require('sinon');
 const sinonChai = require('sinon-chai');
 chai.use(sinonChai);
+const chaiAsPromised = require('chai-as-promised');
+chai.use(chaiAsPromised);
 
 const cli = require('../cli');
 const fs = require('../lib/fs');
 const inquirer = require('inquirer');
 const path = require('path');
+const gitFactory = require('../lib/gitFactory');
+const browser = require('../lib/browser');
 
 // store cache fixture in mem-fs
 const CACHE_PATH = path.normalize(process.env.HOME + '/.bitcar/cache.json');
@@ -29,10 +33,13 @@ describe('the bitcar cli', () => {
         sandbox.restore();
     });
 
-    describe('search term is given but no other flags are provided', () => {
+    describe('search term', () => {
         beforeEach(() => {
-            sinon.stub(fs, 'commit');
-            sinon.stub(inquirer, 'prompt', (options) => {
+            sandbox.stub(gitFactory, 'getInstance', () => {
+                return mocks.git;
+            });
+            sandbox.stub(fs, 'commit');
+            sandbox.stub(inquirer, 'prompt', (options) => {
                 const setupPromptValidation = schemas.setupPrompt.validate(options);
                 if (!setupPromptValidation.error) return Promise.resolve(mocks.setupAnswers);
                 const resultsPromptValidation = schemas.resultsPrompt.validate(options);
@@ -40,12 +47,107 @@ describe('the bitcar cli', () => {
                 return Promise.reject();
             });
         });
-        it('should look for the search term in the cache', () => {
-            return cli({ _: [ 'bitcar' ] })
-                .then((result) => {
-                    const resultValidation = schemas.result.validate(result);
-                    expect(resultValidation.error).to.be.a('null');
+        describe('with no other options', () => {
+            describe('for existing entry', () => {
+                it('should find existing entry for the search term in the cache - bitcar', () => {
+                    return cli({ _: [ 'bitcar' ] })
+                        .then((result) => {
+                            const resultValidation = schemas.result.validate(result);
+                            expect(resultValidation.error).to.be.a('null');
+                        });
                 });
+                it('should find existing entry for the search term in the cache - chassisjs', () => {
+                    return cli({ _: [ 'chassisjs' ] })
+                        .then((result) => {
+                            const resultValidation = schemas.result.validate(result);
+                            expect(resultValidation.error).to.be.a('null');
+                        });
+                });
+            });
+            describe('for non-existant entry', () => {
+                it('should reject with "No results." for non-existant entry for the search term in the cache - doesnotexist', () => {
+                    return expect(cli({ _: [ 'doesnotexist' ] })).to.eventually.be.rejectedWith('No results.');
+                });
+            });
+        });
+    });
+    describe('open option', () => {
+        beforeEach(() => {
+            sandbox.stub(gitFactory, 'getInstance', () => {
+                return mocks.git;
+            });
+            sandbox.stub(browser, 'open', mocks.open);
+            sandbox.stub(fs, 'commit');
+            sandbox.stub(inquirer, 'prompt', (options) => {
+                const setupPromptValidation = schemas.setupPrompt.validate(options);
+                if (!setupPromptValidation.error) return Promise.resolve(mocks.setupAnswers);
+                const resultsPromptValidation = schemas.resultsPrompt.validate(options);
+                if (!resultsPromptValidation.error) return Promise.resolve(mocks.resultAnswers);
+                return Promise.reject();
+            });
+        });
+        describe('with a search term', () => {
+            describe('for existing entry', () => {
+                it('should find existing entry for the search term in the cache - bitcar', () => {
+                    return cli({ _: [ ], open: 'bitcar' })
+                        .then((result) => {
+                            const resultValidation = schemas.result.validate(result);
+                            expect(resultValidation.error).to.be.a('null');
+                        });
+                });
+                it('should open a browser corresponding for the search term in the cache - bitcar', () => {
+                    return cli({ _: [ ], open: 'bitcar' })
+                        .then((result) => {
+                            expect(browser.open).to.have.been.calledWith('https://github.com/carsdotcom/bitcar');
+                        });
+                });
+                it('regardless of order, should open a browser corresponding for the search term in the cache - bitcar', () => {
+                    return cli({ _: [ 'bitcar' ], open: true })
+                        .then((result) => {
+                            const resultValidation = schemas.result.validate(result);
+                            expect(resultValidation.error).to.be.a('null');
+                        });
+                });
+                it('regardless of order, should open a browser corresponding for the search term in the cache - bitcar', () => {
+                    return cli({ _: [ 'bitcar' ], open: true })
+                        .then((result) => {
+                            expect(browser.open).to.have.been.calledWith('https://github.com/carsdotcom/bitcar');
+                        });
+                });
+            });
+            describe('for non-existant entry', () => {
+                it('should exit non-zero with a message of "No results."', () => {
+                    return expect(cli({ _: [ 'doesnotexist' ] })).to.eventually.be.rejectedWith('No results.');
+                });
+            });
+        });
+        describe('without a search term', () => {
+            describe('when current working directory corresponds to an entry in the cache', () => {
+                beforeEach(() => {
+                        sandbox.stub(process, 'cwd', () => '/Users/macheller-ogden/repos/github.com/carsdotcom/bitcar');
+                });
+                it('should find existing entry for the search term in the cache - bitcar', () => {
+                    return cli({ _: [ ], open: true })
+                        .then((result) => {
+                            const resultValidation = schemas.result.validate(result);
+                            expect(resultValidation.error).to.be.a('null');
+                        });
+                });
+                it('should open a browser corresponding to the current directory - bitcar', () => {
+                    return cli({ _: [ ], open: true })
+                        .then((result) => {
+                            expect(browser.open).to.have.been.calledWith('https://github.com/carsdotcom/bitcar');
+                        });
+                });
+            });
+            describe('when current working directory does not correspond to an entry in the cache', () => {
+                it('should exit non-zero with a message of "No results."', () => {
+                    return cli({ _: [ ], open: true })
+                        .then((result) => {
+                            expect(browser.open).to.have.been.calledWith('https://github.com/carsdotcom/bitcar');
+                        });
+                });
+            });
         });
     });
 });

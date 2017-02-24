@@ -42,6 +42,7 @@
   },
   "devDependencies": {
     "chai": "^3.5.0",
+    "chai-as-promised": "^6.0.0",
     "eslint": "^3.16.0",
     "github-changes": "^1.0.4",
     "istanbul": "^0.4.5",
