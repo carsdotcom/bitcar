@@ -13,6 +13,7 @@ const inquirer = require('inquirer');
 const path = require('path');
 const gitFactory = require('../lib/gitFactory');
 const browser = require('../lib/browser');
+const output = require('../lib/output');
 
 // store cache fixture in mem-fs
 const CACHE_PATH = path.normalize(process.env.HOME + '/.bitcar/cache.json');
@@ -25,28 +26,35 @@ const mocks = require('./mocks');
 describe('the bitcar cli', () => {
     let sandbox;
 
-    beforeEach(function () {
+    beforeEach(() => {
         sandbox = sinon.sandbox.create();
+        sandbox.stub(gitFactory, 'getInstance', () => {
+            return mocks.git;
+        });
+        sandbox.stub(browser, 'open', mocks.open);
+        sandbox.stub(fs, 'commit');
+        sandbox.stub(inquirer, 'prompt', (options) => {
+            const setupPromptValidation = schemas.setupPrompt.validate(options);
+            if (!setupPromptValidation.error) return Promise.resolve(mocks.setupAnswers);
+            const resultsPromptValidation = schemas.resultsPrompt.validate(options);
+            if (!resultsPromptValidation.error) return Promise.resolve(mocks.resultAnswers);
+            return Promise.reject();
+        });
     });
 
     afterEach(function () {
         sandbox.restore();
     });
 
-    describe('search term', () => {
-        beforeEach(() => {
-            sandbox.stub(gitFactory, 'getInstance', () => {
-                return mocks.git;
-            });
-            sandbox.stub(fs, 'commit');
-            sandbox.stub(inquirer, 'prompt', (options) => {
-                const setupPromptValidation = schemas.setupPrompt.validate(options);
-                if (!setupPromptValidation.error) return Promise.resolve(mocks.setupAnswers);
-                const resultsPromptValidation = schemas.resultsPrompt.validate(options);
-                if (!resultsPromptValidation.error) return Promise.resolve(mocks.resultAnswers);
-                return Promise.reject();
+    describe('when called with version option', () => {
+        it('should console log version and exit 0', () => {
+            sandbox.stub(output, 'log');
+            return cli({ _: [ ], version: true }).then(() => {
+                expect(output.log).to.have.been.calledWithMatch(sinon.match(/\d\.\d\.\d/));
             });
         });
+    });
+    describe('when called with search term', () => {
         describe('with no other options', () => {
             describe('for existing entry', () => {
                 it('should find existing entry for the search term in the cache - bitcar', () => {
@@ -72,20 +80,6 @@ describe('the bitcar cli', () => {
         });
     });
     describe('open option', () => {
-        beforeEach(() => {
-            sandbox.stub(gitFactory, 'getInstance', () => {
-                return mocks.git;
-            });
-            sandbox.stub(browser, 'open', mocks.open);
-            sandbox.stub(fs, 'commit');
-            sandbox.stub(inquirer, 'prompt', (options) => {
-                const setupPromptValidation = schemas.setupPrompt.validate(options);
-                if (!setupPromptValidation.error) return Promise.resolve(mocks.setupAnswers);
-                const resultsPromptValidation = schemas.resultsPrompt.validate(options);
-                if (!resultsPromptValidation.error) return Promise.resolve(mocks.resultAnswers);
-                return Promise.reject();
-            });
-        });
         describe('with a search term', () => {
             describe('for existing entry', () => {
                 it('should find existing entry for the search term in the cache - bitcar', () => {

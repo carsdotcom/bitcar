@@ -5,6 +5,7 @@ const inquirer = require('inquirer');
 const path = require('path');
 const Promise = require('bluebird');
 const workspaceDir = require('./lib/workspaceDir');
+const output = require('./lib/output');
 
 const refresh = _.partial(lib.getSourceData, true);
 
@@ -14,8 +15,8 @@ function cli(options) {
     let searchTerm;
 
     if (options.version) {
-        console.log(require('./package.json').version);
-        process.exit(0);
+        output.log(require('./package.json').version);
+        return Promise.resolve();
     }
 
     if (options.setup) {
@@ -45,7 +46,7 @@ function cli(options) {
         const pathsPromise = sourceDataPromise.then(lib.getPaths).filter((v) => (new RegExp(searchTerm)).test(v));
         if (options.completions) {
             return pathsPromise.map((repoPath) => _.tail(repoPath.split(path.sep)).join(path.sep))
-                .each(_.ary(console.log, 1));
+                .each(_.ary(output.log, 1));
         } else {
             return pathsPromise.then((results) => {
                 let resultPromise;
