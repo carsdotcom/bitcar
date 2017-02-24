@@ -24,9 +24,11 @@ function cli(options) {
 
     if (_.isString(options.completions) || _.isString(options.open)) {
         searchTerm = options.completions || options.open;
-    } else if (options['clone-all']) {
+    } else if (options['clone-all'] || options['force-latest']) {
         if (_.isString(options['clone-all'])) {
             searchTerm = options['clone-all'];
+        } else if (_.isString(options['force-latest'])) {
+            searchTerm = options['force-latest'];
         } else {
             searchTerm = '.*';
         }
@@ -63,6 +65,25 @@ function cli(options) {
                                 });
                             } else {
                                 throw new Error('Clone All Aborted.');
+                            }
+                        });
+                    });
+                } else if (results.length && options['force-latest']) {
+                    return Promise.all(_.map(results, lib.getSourceResult)).then((repos) => {
+                        return inquirer.prompt([
+                            {
+                                type: 'confirm',
+                                name: 'confirm',
+                                message: 'Are you sure you want to force a hard reset to latest origin/master for ' + repos.length + ' repos?',
+                                default: false
+                            }
+                        ]).then((answers) => {
+                            if (answers.confirm) {
+                                return Promise.resolve(repos).map(lib.maybeClone).mapSeries(lib.forceLatest).then(() => {
+                                    return { repoDir: workspaceDir };
+                                });
+                            } else {
+                                throw new Error('Force Latest Aborted.');
                             }
                         });
                     });
