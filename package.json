@@ -13,6 +13,7 @@
   "scripts": {
     "lint": "./node_modules/.bin/eslint .",
     "test": "./node_modules/.bin/mocha \"test/**/*.js\"",
+    "watch": "npm run test -- --watch",
     "changelog": "./node_modules/.bin/github-changes -o carsdotcom -r bitcar",
     "generate-and-stage-changelog": "npm run changelog && git add -A",
     "coverage": "rm -rf coverage && node node_modules/.bin/istanbul cover -x \"test/**/*.js\" --dir=\"coverage\" --root=\"./\" node_modules/.bin/_mocha -- \"test/**/*.js\"",
