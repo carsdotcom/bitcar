@@ -23,8 +23,12 @@ function cli(options) {
         return require('./setup')();
     }
 
-    if (_.isString(options.completions) || _.isString(options.open)) {
-        searchTerm = options.completions || options.open;
+    if (_.isString(options.completions)) {
+        searchTerm = options.completions;
+    } else if (_.isString(options.open)) {
+        searchTerm = options.open;
+    } else if (_.isString(options.edit)) {
+        searchTerm = options.edit;
     } else if (options['clone-all'] || options['force-latest']) {
         if (_.isString(options['clone-all'])) {
             searchTerm = options['clone-all'];

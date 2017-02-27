@@ -144,5 +144,44 @@ describe('the bitcar cli', () => {
             });
         });
     });
+    describe('edit option', () => {
+        describe('with a search term', () => {
+            describe('for existing entry', () => {
+                it('should find existing entry for the search term in the cache - bitcar', () => {
+                    return cli({ _: [ ], edit: 'bitcar' })
+                        .then((result) => {
+                            const resultValidation = schemas.result.validate(result);
+                            expect(resultValidation.error).to.be.a('null');
+                        });
+                });
+                it('regardless of order, find existing entry for the search term in the cache - bitcar', () => {
+                    return cli({ _: [ 'bitcar' ], edit: true })
+                        .then((result) => {
+                            const resultValidation = schemas.result.validate(result);
+                            expect(resultValidation.error).to.be.a('null');
+                        });
+                });
+            });
+            describe('for non-existant entry', () => {
+                it('should exit non-zero with a message of "No results."', () => {
+                    return expect(cli({ _: [ 'doesnotexist' ] })).to.eventually.be.rejectedWith('No results.');
+                });
+            });
+        });
+        describe('without a search term', () => {
+            describe('when current working directory corresponds to an entry in the cache', () => {
+                beforeEach(() => {
+                        sandbox.stub(process, 'cwd', () => '/Users/macheller-ogden/repos/github.com/carsdotcom/bitcar');
+                });
+                it('should find existing entry for the search term in the cache - bitcar', () => {
+                    return cli({ _: [ ], edit: true })
+                        .then((result) => {
+                            const resultValidation = schemas.result.validate(result);
+                            expect(resultValidation.error).to.be.a('null');
+                        });
+                });
+            });
+        });
+    });
 });
 

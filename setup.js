@@ -69,6 +69,12 @@ function setup() {
             name: 'bitbucketServerHost',
             message: 'Please enter your Bitbucket Server domain (NOTE: there is no support for bitbucket.org at this time):',
             when: (answers) => answers.drivers.indexOf('bitbucket-server') >= 0
+        },
+        {
+            type: 'input',
+            name: 'editorCmd',
+            message: 'Please enter the terminal command you\'d like to use for viewing/edit files:',
+            default: 'vim',
         }
     ]).then((answers) => {
         return new Promise((resolve, reject) => {
@@ -76,7 +82,8 @@ function setup() {
 
             const profileContent = `
 # begin bitcar
-export BITCAR_WORKSPACE_DIR='${answers.workspaceDir}'
+export BITCAR_WORKSPACE_DIR="${answers.workspaceDir}"
+export BITCAR_EDITOR_CMD="${answers.editorCmd}"
 source $HOME/.bitcar/cli.sh
 source $HOME/.bitcar/completions.sh
 # end bitcar`;

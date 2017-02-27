@@ -8,6 +8,15 @@ function bitcar_cli() {
     fi
 
     local target="$HOME/.bitcar/.bitcar_target"
-    bitcar "$@" && if [ -f "$target" ]; then cd "$(cat "$target")" && rm "$target"; fi
+
+    if bitcar "$@" && [ -f "$target" ]; then
+        cd "$(cat "$target")"
+        if [ "$1" = "--edit" ] || [ "$2" = "--edit" ] || [ "$1" = "-e" ] || [ "$2" = "-e" ]; then
+            if [ -n "$BITCAR_EDITOR_CMD" ]; then
+                $BITCAR_EDITOR_CMD "$(cat "$target")/"
+            fi
+        fi
+        rm "$target"
+    fi
 }
-alias <%= alias %>=bitcar_cli
+alias bit=bitcar_cli

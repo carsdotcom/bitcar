@@ -1,6 +1,7 @@
 ## Change Log
 
-### upcoming (2017/02/26 20:38 +00:00)
+### upcoming (2017/02/27 15:43 +00:00)
+- [d8cdbb1](https://github.com/carsdotcom/bitcar/commit/d8cdbb10e76f24f63f787c2f7389e093fb508e11) adding test watch (@machellerogden)
 - [8614f2f](https://github.com/carsdotcom/bitcar/commit/8614f2f04e863d25523338fc24efdfd015d6c1b9) more tests (@machellerogden)
 - [6cf9aa3](https://github.com/carsdotcom/bitcar/commit/6cf9aa3ac95f76539c3804d9ff9b7dda18b6d0d2) adding tests (@machellerogden)
 
