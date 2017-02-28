@@ -2,7 +2,7 @@
 
 > Seemlessly jump between repos from the command line.
 
-## Example Usage
+----
 
 ![bitcar in action](https://raw.githubusercontent.com/carsdotcom/bitcar/master/bitcar-google-demo.gif)
 
@@ -51,7 +51,15 @@ bit --open {searchTerm}
 bit -o {searchTerm}
 ```
 
-The `searchTerm` argument is optional. If no `searchTerm` is given, then bitcar will attempt to open the current directory's repo in the browser.
+### Open Repo in Editor
+
+```
+bit --edit {searchTerm}
+```
+
+```
+bit -e {searchTerm}
+```
 
 ### Refresh Cache
 
@@ -65,12 +73,39 @@ bit -r
 
 This is done automatically the first time you try and use bitcar, but you can also manual refresh the cache when needed.
 
+### Defaults
+
+The `bit` command without any `searchTerm` will drop you into the root bitcar workspace.
+
+For `--open` and `--edit`, the `searchTerm` argument is optional. If no `searchTerm` is given, then bitcar will attempt to open the current directory's repo.
+
 ## Github personal access token settings
 
 If you'd like to use bitcar with your private repos, you'll need to setup a
 [personal access token on your github
 account](https://github.com/settings/tokens/new). Please ensure you've set the
 correct scope for this token. The `repo` scope should be fully enabled.
+
+## Experimental Features
+
+*WARNING: Experimental features are named so for a reason! These are currently under active development and may or may not be part of future releases. Use at your own risk.*
+
+### Clone All
+
+```
+bit --clone-all {searchTerm}
+```
+
+This will clone ALL repos which match the `searchTerm`. If `searchTerm` is omitted it will clone ALL repos in your local cache. You will be prompted to confirm your intention.
+
+### Force Latest
+
+```
+bit --force-latest {searchTerm}
+```
+
+This feature will likely be removed in the near future. It will clone ALL repos matching the `searchTerm` if they do not already exist on your local machine. If any given repo matching the `searchTerm` already exists on your local machine it will be cleaned and hard reset to origin/master.
+
 
 ## License
 

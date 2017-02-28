@@ -1,6 +1,13 @@
 ## Change Log
 
-### upcoming (2017/02/28 16:32 +00:00)
+### upcoming (2017/02/28 20:51 +00:00)
+- [adc248a](https://github.com/carsdotcom/bitcar/commit/adc248a429debf0db797f318934bb3fca20da3fe) updating README (@machellerogden)
+- [8241bd9](https://github.com/carsdotcom/bitcar/commit/8241bd96d00baa4f83eda35de7890aec47db4dae) updating README (@machellerogden)
+- [4e71736](https://github.com/carsdotcom/bitcar/commit/4e71736fc16b1585582ff23653c016792b63dabc) adding gif to README (@machellerogden)
+- [d1b2ff0](https://github.com/carsdotcom/bitcar/commit/d1b2ff0dfcee00ee75de574ddd19ccdcd725a5a5) adding gif for README (@machellerogden)
+- [82d530c](https://github.com/carsdotcom/bitcar/commit/82d530c89553a3cb6b04d2043124c0e5c3ec570c) setting the stage for more tests and future enhancements (@machellerogden)
+- [a4574a2](https://github.com/carsdotcom/bitcar/commit/a4574a21f6b18deb24dfef3dc53523a4ab4f7dc1) fixing issue with options handler where current directory default was not working for edit and open (@machellerogden)
+- [0863f65](https://github.com/carsdotcom/bitcar/commit/0863f65e2ee96f2fff7fab5dd3a4c901cac7e1b1) updating changelog (@machellerogden)
 - [9c65515](https://github.com/carsdotcom/bitcar/commit/9c6551530a0faac0d2116292c703fa7932f268f2) adding more test setup (@machellerogden)
 - [21f3748](https://github.com/carsdotcom/bitcar/commit/21f3748f0a477ce7655fd3cc738f66d9c739c80c) refactoring options handler (@machellerogden)
 - [b0788e4](https://github.com/carsdotcom/bitcar/commit/b0788e4ed41e08e2f8104cb8e43a1a36a11d7e21) adding tests and refactoring options handling (@machellerogden)
