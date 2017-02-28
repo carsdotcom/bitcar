@@ -14,6 +14,9 @@ const path = require('path');
 const gitFactory = require('../lib/gitFactory');
 const browser = require('../lib/browser');
 const output = require('../lib/output');
+const config = require('../lib/config');
+const drivers = require('../drivers');
+const axios = require('axios');
 
 // store cache fixture in mem-fs
 const CACHE_PATH = path.normalize(process.env.HOME + '/.bitcar/cache.json');
@@ -32,12 +35,15 @@ describe('the bitcar cli', () => {
             return mocks.git;
         });
         sandbox.stub(browser, 'open', mocks.open);
-        sandbox.stub(fs, 'commit');
+        sandbox.stub(fs, 'commit', (cb) => cb());
+        sandbox.stub(config, 'get', () => mocks.config);
         sandbox.stub(inquirer, 'prompt', (options) => {
             const setupPromptValidation = schemas.setupPrompt.validate(options);
             if (!setupPromptValidation.error) return Promise.resolve(mocks.setupAnswers);
             const resultsPromptValidation = schemas.resultsPrompt.validate(options);
             if (!resultsPromptValidation.error) return Promise.resolve(mocks.resultAnswers);
+            const credentialsPromptValidation = schemas.credentialsPrompt.validate(options);
+            if (!credentialsPromptValidation.error) return Promise.resolve(mocks.credentialsAnswers);
             return Promise.reject();
         });
     });
@@ -220,6 +226,46 @@ describe('the bitcar cli', () => {
                         });
                 });
             });
+        });
+    });
+    describe('refresh option', () => {
+        beforeEach(() => {
+            sandbox.stub(output, 'log');
+        });
+        it('should call each configured driver', () => {
+            sandbox.stub(drivers, 'bitbucket-server', () => Promise.resolve([]));
+            sandbox.stub(drivers, 'github', () => Promise.resolve([]));
+            return cli({ _: [ ], refresh: true })
+                .then(() => {
+                    expect(drivers['bitbucket-server']).to.have.been.called;
+                    expect(drivers.github).to.have.been.called;
+                });
+        });
+    });
+    describe('bitbucket-server driver', () => {
+        beforeEach(() => {
+            sandbox.stub(output, 'log');
+            sandbox.stub(axios, 'request', () => Promise.resolve(mocks.bitbucketServerResponse));
+            sandbox.stub(drivers, 'github', () => Promise.resolve([]));
+        });
+        it('should call axios request', () => {
+            return cli({ _: [ ], refresh: true })
+                .then(() => {
+                    expect(axios.request).to.have.been.called;
+                });
+        });
+    });
+    describe('github driver', () => {
+        beforeEach(() => {
+            sandbox.stub(output, 'log');
+            sandbox.stub(axios, 'get', () => Promise.resolve(mocks.githubResponse));
+            sandbox.stub(drivers, 'bitbucket-server', () => Promise.resolve([]));
+        });
+        it('should call axios request', () => {
+            return cli({ _: [ ], refresh: true })
+                .then(() => {
+                    expect(axios.get).to.have.been.called;
+                });
         });
     });
 });

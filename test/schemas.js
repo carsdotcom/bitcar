@@ -16,6 +16,12 @@ exports.resultsPrompt = Joi.array().items(Joi.object({
     choices: Joi.array().items(Joi.string().optional())
 }));
 
+exports.credentialsPrompt = Joi.array().items(Joi.object({
+    type: Joi.string().valid([ 'input', 'password' ]).required(),
+    name: Joi.string().valid([ 'username', 'password' ]).required(),
+    message: Joi.string().required()
+}));
+
 exports.result = Joi.object().keys({
     name: Joi.string().required(),
     clone: Joi.string().required(),

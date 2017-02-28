@@ -13,6 +13,11 @@ exports.resultAnswers = {
     result: 'github.com/carsdotcom/bitcar'
 };
 
+exports.credentialsAnswers = {
+    username: 'foo',
+    password: 'bar'
+};
+
 exports.git = {
     clone: (url, dir, cb) => {
         return cb(null, {});
@@ -26,6 +31,32 @@ exports.git = {
     clean: (mode, options, cb) => {
         return cb(null, {});
     }
+};
+
+exports.bitbucketServerResponse = {
+    data: {
+        values: []
+    }
+};
+
+exports.githubResponse = {
+    headers: {},
+    data: []
+};
+
+exports.config = {
+    alias: "bit",
+    drivers: [
+        {
+            type: "github",
+            host: "github.com",
+            accessToken: "9eccdc79e394f713624486c0272f44fe67267b97"
+        },
+        {
+            type: "bitbucket-server",
+            host: "git.cars.com"
+        }
+    ]
 };
 
 exports.open = function (url, cb) {

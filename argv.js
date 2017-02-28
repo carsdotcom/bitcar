@@ -1,4 +1,5 @@
 'use strict';
+/* istanbul ignore next */
 module.exports = require('minimist')(process.argv.slice(2), {
     alias: {
         version: 'v',

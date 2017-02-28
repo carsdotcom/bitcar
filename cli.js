@@ -7,8 +7,6 @@ const Promise = require('bluebird');
 const workspaceDir = require('./lib/workspaceDir');
 const output = require('./lib/output');
 
-const refresh = _.partial(lib.getSourceData, true);
-
 module.exports = cli;
 
 function setSearchTerm(options) {
@@ -45,7 +43,7 @@ function cli(options) {
     }
 
     if (options.refresh) {
-        return refresh();
+        return lib.getSourceData(true);
     } else {
         const sourceDataPromise = lib.getSourceData();
         const pathsPromise = sourceDataPromise.then(lib.getPaths).filter((v) => (new RegExp(searchTerm)).test(v));
