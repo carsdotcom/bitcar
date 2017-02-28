@@ -13,20 +13,19 @@ module.exports = cli;
 
 function setSearchTerm(options) {
     let searchTerm;
+    let flags = _.pick(options, [
+        'open',
+        'edit',
+        'completions',
+        'clone-all',
+        'force-latest'
+    ]);
     if (options._ && options._[0]) {
         searchTerm = options._[0];
-    } else if (_.isString(options.completions)) {
-        searchTerm = options.completions;
-    } else if (_.isString(options.open)) {
-        searchTerm = options.open;
-    } else if (_.isString(options.edit)) {
-        searchTerm = options.edit;
-    } else if (_.isString(options['clone-all'])) {
-        searchTerm = options['clone-all'];
-    } else if (_.isString(options['force-latest'])) {
-        searchTerm = options['force-latest'];
-    } else if (options.completions || options['clone-all'] || options['force-latest']) {
-        searchTerm = '.*';
+    } else if (_.keys(flags).length) {
+        searchTerm = _.reduce(_.values(flags), (acc, value) => {
+            return _.isString(value) ? value : acc;
+        }, '.*');
     } else {
         searchTerm = '^' + _.takeRight(process.cwd().split(path.sep), 3).join(path.sep) + '$';
     }
