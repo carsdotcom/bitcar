@@ -56,7 +56,6 @@
   "pre-commit": [
     "lint",
     "test",
-    "check-coverage",
-    "generate-and-stage-changelog"
+    "check-coverage"
   ]
 }

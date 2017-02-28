@@ -11,21 +11,25 @@ module.exports = cli;
 
 function setSearchTerm(options) {
     let searchTerm;
-    let flags = _.pick(options, [
+    let defaultToCurrent = _.pick(options, [
         'open',
-        'edit',
+        'edit'
+    ]);
+    let defaultToWild = _.pick(options, [
         'completions',
         'clone-all',
         'force-latest'
     ]);
     if (options._ && options._[0]) {
         searchTerm = options._[0];
-    } else if (_.keys(flags).length) {
-        searchTerm = _.reduce(_.values(flags), (acc, value) => {
+    } else if (_.keys(defaultToCurrent).length) {
+        searchTerm = _.reduce(_.values(defaultToCurrent), (acc, value) => {
+            return _.isString(value) ? value : acc;
+        }, '^' + _.takeRight(process.cwd().split(path.sep), 3).join(path.sep) + '$');
+    } else if (_.keys(defaultToWild).length) {
+        searchTerm = _.reduce(_.values(defaultToWild), (acc, value) => {
             return _.isString(value) ? value : acc;
         }, '.*');
-    } else {
-        searchTerm = '^' + _.takeRight(process.cwd().split(path.sep), 3).join(path.sep) + '$';
     }
     return searchTerm;
 }
