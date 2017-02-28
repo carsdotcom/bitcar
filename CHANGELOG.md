@@ -1,6 +1,8 @@
 ## Change Log
 
-### upcoming (2017/02/28 15:23 +00:00)
+### upcoming (2017/02/28 16:32 +00:00)
+- [9c65515](https://github.com/carsdotcom/bitcar/commit/9c6551530a0faac0d2116292c703fa7932f268f2) adding more test setup (@machellerogden)
+- [21f3748](https://github.com/carsdotcom/bitcar/commit/21f3748f0a477ce7655fd3cc738f66d9c739c80c) refactoring options handler (@machellerogden)
 - [b0788e4](https://github.com/carsdotcom/bitcar/commit/b0788e4ed41e08e2f8104cb8e43a1a36a11d7e21) adding tests and refactoring options handling (@machellerogden)
 
 ### v1.5.0 (2017/02/27 15:43 +00:00)
