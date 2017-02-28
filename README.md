@@ -2,6 +2,8 @@
 
 > Seemlessly jump between repos from the command line.
 
+## Example Usage
+
 ![bitcar in action](https://raw.githubusercontent.com/carsdotcom/bitcar/master/bitcar-google-demo.gif)
 
 ## Requirements
