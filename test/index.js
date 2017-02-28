@@ -164,7 +164,7 @@ describe('the bitcar cli', () => {
             });
             describe('for non-existant entry', () => {
                 it('should exit non-zero with a message of "No results."', () => {
-                    return expect(cli({ _: [ 'doesnotexist' ] })).to.eventually.be.rejectedWith('No results.');
+                    return expect(cli({ _: [ 'doesnotexist' ], edit: true })).to.eventually.be.rejectedWith('No results.');
                 });
             });
         });
@@ -178,6 +178,45 @@ describe('the bitcar cli', () => {
                         .then((result) => {
                             const resultValidation = schemas.result.validate(result);
                             expect(resultValidation.error).to.be.a('null');
+                        });
+                });
+            });
+        });
+    });
+    describe('completions option', () => {
+        beforeEach(() => {
+            sandbox.stub(output, 'log');
+        });
+        describe('with a search term', () => {
+            describe('for existing entry', () => {
+                it('should find existing entry for the search term in the cache - bitcar', () => {
+                    return cli({ _: [ ], completions: 'bitcar' })
+                        .then((results) => {
+                            const resultsValidation = schemas.results.validate(results);
+                            expect(resultsValidation.error).to.be.a('null');
+                        });
+                });
+                it('regardless of order, find existing entry for the search term in the cache - bitcar', () => {
+                    return cli({ _: [ 'bitcar' ], completions: true })
+                        .then((results) => {
+                            const resultsValidation = schemas.results.validate(results);
+                            expect(resultsValidation.error).to.be.a('null');
+                        });
+                });
+            });
+            describe('for non-existant entry', () => {
+                it('should exit non-zero with a message of "No results."', () => {
+                    return expect(cli({ _: [ 'doesnotexist' ], completions: true })).to.eventually.eql([]);
+                });
+            });
+        });
+        describe('without a search term', () => {
+            describe('when current working directory corresponds to an entry in the cache', () => {
+                it('should find existing entry for the search term in the cache - bitcar', () => {
+                    return cli({ _: [ ], completions: true })
+                        .then((results) => {
+                            const resultsValidation = schemas.results.validate(results);
+                            expect(resultsValidation.error).to.be.a('null');
                         });
                 });
             });

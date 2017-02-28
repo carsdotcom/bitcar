@@ -1,6 +1,8 @@
 ## Change Log
 
-### upcoming (2017/02/27 15:43 +00:00)
+### v1.5.0 (2017/02/27 15:43 +00:00)
+- [d5cc0dc](https://github.com/carsdotcom/bitcar/commit/d5cc0dcf588a24ca5afd0737d1aa052f61b8b0ca) 1.5.0 (@machellerogden)
+- [05bd8ba](https://github.com/carsdotcom/bitcar/commit/05bd8baf9d1ae38eb1ae76348cfaae11693dd2a4) adding basic editor support (@machellerogden)
 - [d8cdbb1](https://github.com/carsdotcom/bitcar/commit/d8cdbb10e76f24f63f787c2f7389e093fb508e11) adding test watch (@machellerogden)
 - [8614f2f](https://github.com/carsdotcom/bitcar/commit/8614f2f04e863d25523338fc24efdfd015d6c1b9) more tests (@machellerogden)
 - [6cf9aa3](https://github.com/carsdotcom/bitcar/commit/6cf9aa3ac95f76539c3804d9ff9b7dda18b6d0d2) adding tests (@machellerogden)

@@ -11,8 +11,30 @@ const refresh = _.partial(lib.getSourceData, true);
 
 module.exports = cli;
 
-function cli(options) {
+function setSearchTerm(options) {
     let searchTerm;
+    if (options._ && options._[0]) {
+        searchTerm = options._[0];
+    } else if (_.isString(options.completions)) {
+        searchTerm = options.completions;
+    } else if (_.isString(options.open)) {
+        searchTerm = options.open;
+    } else if (_.isString(options.edit)) {
+        searchTerm = options.edit;
+    } else if (_.isString(options['clone-all'])) {
+        searchTerm = options['clone-all'];
+    } else if (_.isString(options['force-latest'])) {
+        searchTerm = options['force-latest'];
+    } else if (options.completions || options['clone-all'] || options['force-latest']) {
+        searchTerm = '.*';
+    } else {
+        searchTerm = '^' + _.takeRight(process.cwd().split(path.sep), 3).join(path.sep) + '$';
+    }
+    return searchTerm;
+}
+
+function cli(options) {
+    let searchTerm = setSearchTerm(options);
 
     if (options.version) {
         output.log(require('./package.json').version);
@@ -21,26 +43,6 @@ function cli(options) {
 
     if (options.setup) {
         return require('./setup')();
-    }
-
-    if (_.isString(options.completions)) {
-        searchTerm = options.completions;
-    } else if (_.isString(options.open)) {
-        searchTerm = options.open;
-    } else if (_.isString(options.edit)) {
-        searchTerm = options.edit;
-    } else if (options['clone-all'] || options['force-latest']) {
-        if (_.isString(options['clone-all'])) {
-            searchTerm = options['clone-all'];
-        } else if (_.isString(options['force-latest'])) {
-            searchTerm = options['force-latest'];
-        } else {
-            searchTerm = '.*';
-        }
-    } else if (options._ && options._[0]) {
-        searchTerm = options._[0];
-    } else if (!options.completions) {
-        searchTerm = '^' + _.takeRight(process.cwd().split(path.sep), 3).join(path.sep) + '$';
     }
 
     if (options.refresh) {

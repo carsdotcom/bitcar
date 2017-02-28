@@ -22,3 +22,5 @@ exports.result = Joi.object().keys({
     html: Joi.string().required(),
     repoDir: Joi.string().required()
 });
+
+exports.results = Joi.array().items([ Joi.any().allow(null), exports.result ]).min(0);
