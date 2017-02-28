@@ -4,9 +4,11 @@ const axios = require('axios');
 const Promise = require('bluebird');
 const inquirer = require('inquirer');
 
-module.exports = bitbucketSourcePromise;
+module.exports =  {
+    getConfiguredRepos
+};
 
-function bitbucketSourcePromise(config) {
+function getConfiguredRepos(config) {
     const bitbucketConfig = _.find(config.drivers, { type: 'bitbucket-server' });
     if (bitbucketConfig && bitbucketConfig.host) {
         return inquirer.prompt([

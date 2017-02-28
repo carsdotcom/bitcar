@@ -3,7 +3,24 @@ const _ = require('lodash');
 const axios = require('axios');
 const Promise = require('bluebird');
 
-module.exports = githubSourcePromise;
+module.exports =  {
+    getConfiguredRepos
+};
+
+function getConfiguredRepos(config) {
+    const githubConfig = _.find(config.drivers, { type: 'github' });
+    let resultPromises = [];
+    if (githubConfig && githubConfig.accessToken) {
+        resultPromises.push(getOwnRepos(githubConfig));
+    }
+    if (githubConfig && githubConfig.usernames) {
+        resultPromises = resultPromises.concat(getReposFromUsernames(githubConfig));
+    }
+    if (!resultPromises.length) {
+        return Promise.resolve([]);
+    }
+    return Promise.all(resultPromises);
+}
 
 function parseLinkHeader(header) {
     if (header.length === 0) throw new Error("input must not be of zero length");
@@ -59,19 +76,4 @@ function getReposFromUsernames(config) {
         sources = sources.concat(result);
         return sources;
     }, []);
-}
-
-function githubSourcePromise(config) {
-    const githubConfig = _.find(config.drivers, { type: 'github' });
-    let resultPromises = [];
-    if (githubConfig && githubConfig.accessToken) {
-        resultPromises.push(getOwnRepos(githubConfig));
-    }
-    if (githubConfig && githubConfig.usernames) {
-        resultPromises = resultPromises.concat(getReposFromUsernames(githubConfig));
-    }
-    if (!resultPromises.length) {
-        return Promise.resolve([]);
-    }
-    return Promise.all(resultPromises);
 }

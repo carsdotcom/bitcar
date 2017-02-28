@@ -36,7 +36,6 @@ describe('the bitcar cli', () => {
         });
         sandbox.stub(browser, 'open', mocks.open);
         sandbox.stub(fs, 'commit', (cb) => cb());
-        sandbox.stub(config, 'get', () => mocks.config);
         sandbox.stub(inquirer, 'prompt', (options) => {
             const setupPromptValidation = schemas.setupPrompt.validate(options);
             if (!setupPromptValidation.error) return Promise.resolve(mocks.setupAnswers);
@@ -233,12 +232,12 @@ describe('the bitcar cli', () => {
             sandbox.stub(output, 'log');
         });
         it('should call each configured driver', () => {
-            sandbox.stub(drivers, 'bitbucket-server', () => Promise.resolve([]));
-            sandbox.stub(drivers, 'github', () => Promise.resolve([]));
+            sandbox.stub(drivers['bitbucket-server'], 'getConfiguredRepos', () => Promise.resolve([]));
+            sandbox.stub(drivers.github, 'getConfiguredRepos', () => Promise.resolve([]));
             return cli({ _: [ ], refresh: true })
                 .then(() => {
-                    expect(drivers['bitbucket-server']).to.have.been.called;
-                    expect(drivers.github).to.have.been.called;
+                    expect(drivers['bitbucket-server'].getConfiguredRepos).to.have.been.called;
+                    expect(drivers.github.getConfiguredRepos).to.have.been.called;
                 });
         });
     });
@@ -246,12 +245,20 @@ describe('the bitcar cli', () => {
         beforeEach(() => {
             sandbox.stub(output, 'log');
             sandbox.stub(axios, 'request', () => Promise.resolve(mocks.bitbucketServerResponse));
-            sandbox.stub(drivers, 'github', () => Promise.resolve([]));
+            sandbox.stub(drivers.github, 'getConfiguredRepos', () => Promise.resolve([]));
         });
         it('should call axios request', () => {
+            sandbox.stub(config, 'get', () => mocks.config);
             return cli({ _: [ ], refresh: true })
                 .then(() => {
                     expect(axios.request).to.have.been.called;
+                });
+        });
+        it('shouldn\'t make any requests if there is no config', () => {
+            sandbox.stub(config, 'get', () => mocks.configWithoutBitbucketServer);
+            return cli({ _: [ ], refresh: true })
+                .then(() => {
+                    expect(axios.request).not.to.have.been.called;
                 });
         });
     });
@@ -259,12 +266,27 @@ describe('the bitcar cli', () => {
         beforeEach(() => {
             sandbox.stub(output, 'log');
             sandbox.stub(axios, 'get', () => Promise.resolve(mocks.githubResponse));
-            sandbox.stub(drivers, 'bitbucket-server', () => Promise.resolve([]));
+            sandbox.stub(drivers['bitbucket-server'], 'getConfiguredRepos', () => Promise.resolve([]));
         });
         it('should call axios request', () => {
+            sandbox.stub(config, 'get', () => mocks.config);
             return cli({ _: [ ], refresh: true })
                 .then(() => {
                     expect(axios.get).to.have.been.called;
+                });
+        });
+        it('should make requests for any usernames given in config', () => {
+            sandbox.stub(config, 'get', () => mocks.configWithUsernames);
+            return cli({ _: [ ], refresh: true })
+                .then(() => {
+                    expect(axios.get).to.have.been.called;
+                });
+        });
+        it('shouldn\'t make any requests if there is no config', () => {
+            sandbox.stub(config, 'get', () => mocks.configWithoutGithub);
+            return cli({ _: [ ], refresh: true })
+                .then(() => {
+                    expect(axios.get).not.to.have.been.called;
                 });
         });
     });

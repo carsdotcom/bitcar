@@ -59,6 +59,43 @@ exports.config = {
     ]
 };
 
+exports.configWithUsernames = {
+    alias: "bit",
+    drivers: [
+        {
+            type: "github",
+            host: "github.com",
+            accessToken: "9eccdc79e394f713624486c0272f44fe67267b97",
+            usernames: [ 'google' ]
+        },
+        {
+            type: "bitbucket-server",
+            host: "git.cars.com"
+        }
+    ]
+};
+
+exports.configWithoutGithub = {
+    alias: "bit",
+    drivers: [
+        {
+            type: "bitbucket-server",
+            host: "git.cars.com"
+        }
+    ]
+};
+
+exports.configWithoutBitbucketServer = {
+    alias: "bit",
+    drivers: [
+        {
+            type: "github",
+            host: "github.com",
+            accessToken: "9eccdc79e394f713624486c0272f44fe67267b97"
+        }
+    ]
+};
+
 exports.open = function (url, cb) {
     cb(null);
 };
