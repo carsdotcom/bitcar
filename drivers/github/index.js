@@ -4,7 +4,9 @@ const axios = require('axios');
 const Promise = require('bluebird');
 
 module.exports =  {
-    getConfiguredRepos
+    getConfiguredRepos,
+    getOwnRepos,
+    getReposFromUsernames
 };
 
 function getConfiguredRepos(config) {

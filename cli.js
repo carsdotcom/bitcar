@@ -46,6 +46,10 @@ function cli(options) {
         return require('./setup')();
     }
 
+    if (options['sync-existing']) {
+        return lib.syncExisting();
+    }
+
     if (options.refresh) {
         return lib.getSourceData(true);
     } else {

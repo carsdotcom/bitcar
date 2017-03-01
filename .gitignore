@@ -1,5 +1,4 @@
 node_modules
-sources/.cache.json
 npm-debug.log
 coverage
 .DS_Store

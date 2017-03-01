@@ -1,0 +1,841 @@
+{
+    "git.cars.com": [
+        {
+            "name": "carscp/api-project-template",
+            "clone": "https://mhellerogden@git.cars.com/scm/carscp/api-project-template.git",
+            "html": "https://git.cars.com/projects/CARSCP/repos/api-project-template/browse"
+        },
+        {
+            "name": "carscp/camel-poc",
+            "clone": "https://mhellerogden@git.cars.com/scm/carscp/camel-poc.git",
+            "html": "https://git.cars.com/projects/CARSCP/repos/camel-poc/browse"
+        },
+        {
+            "name": "carscp/config-management",
+            "clone": "https://mhellerogden@git.cars.com/scm/carscp/config-management.git",
+            "html": "https://git.cars.com/projects/CARSCP/repos/config-management/browse"
+        },
+        {
+            "name": "carscp/config-management-apigee",
+            "clone": "https://mhellerogden@git.cars.com/scm/carscp/config-management-apigee.git",
+            "html": "https://git.cars.com/projects/CARSCP/repos/config-management-apigee/browse"
+        },
+        {
+            "name": "carscp/content-system-request-client",
+            "clone": "https://mhellerogden@git.cars.com/scm/carscp/content-system-request-client.git",
+            "html": "https://git.cars.com/projects/CARSCP/repos/content-system-request-client/browse"
+        },
+        {
+            "name": "carscp/core-shopping-api-gateway",
+            "clone": "https://mhellerogden@git.cars.com/scm/carscp/core-shopping-api-gateway.git",
+            "html": "https://git.cars.com/projects/CARSCP/repos/core-shopping-api-gateway/browse"
+        },
+        {
+            "name": "carscp/core-shopping-smoketest",
+            "clone": "https://mhellerogden@git.cars.com/scm/carscp/core-shopping-smoketest.git",
+            "html": "https://git.cars.com/projects/CARSCP/repos/core-shopping-smoketest/browse"
+        },
+        {
+            "name": "carscp/core-shopping-support-api",
+            "clone": "https://mhellerogden@git.cars.com/scm/carscp/core-shopping-support-api.git",
+            "html": "https://git.cars.com/projects/CARSCP/repos/core-shopping-support-api/browse"
+        },
+        {
+            "name": "carscp/customer-api",
+            "clone": "https://mhellerogden@git.cars.com/scm/carscp/customer-api.git",
+            "html": "https://git.cars.com/projects/CARSCP/repos/customer-api/browse"
+        },
+        {
+            "name": "carscp/media-management",
+            "clone": "https://mhellerogden@git.cars.com/scm/carscp/media-management.git",
+            "html": "https://git.cars.com/projects/CARSCP/repos/media-management/browse"
+        },
+        {
+            "name": "carscp/price-advisor-api",
+            "clone": "https://mhellerogden@git.cars.com/scm/carscp/price-advisor-api.git",
+            "html": "https://git.cars.com/projects/CARSCP/repos/price-advisor-api/browse"
+        },
+        {
+            "name": "carscp/price-advisor-api-apigee",
+            "clone": "https://mhellerogden@git.cars.com/scm/carscp/price-advisor-api-apigee.git",
+            "html": "https://git.cars.com/projects/CARSCP/repos/price-advisor-api-apigee/browse"
+        },
+        {
+            "name": "carscp/price-advisor-batch",
+            "clone": "https://mhellerogden@git.cars.com/scm/carscp/price-advisor-batch.git",
+            "html": "https://git.cars.com/projects/CARSCP/repos/price-advisor-batch/browse"
+        },
+        {
+            "name": "carscp/qa-assist",
+            "clone": "https://mhellerogden@git.cars.com/scm/carscp/qa-assist.git",
+            "html": "https://git.cars.com/projects/CARSCP/repos/qa-assist/browse"
+        },
+        {
+            "name": "carscp/seo-mgmt",
+            "clone": "https://mhellerogden@git.cars.com/scm/carscp/seo-mgmt.git",
+            "html": "https://git.cars.com/projects/CARSCP/repos/seo-mgmt/browse"
+        },
+        {
+            "name": "carscp/www-cars-com",
+            "clone": "https://mhellerogden@git.cars.com/scm/carscp/www-cars-com.git",
+            "html": "https://git.cars.com/projects/CARSCP/repos/www-cars-com/browse"
+        },
+        {
+            "name": "carscp/www-cars-com-static",
+            "clone": "https://mhellerogden@git.cars.com/scm/carscp/www-cars-com-static.git",
+            "html": "https://git.cars.com/projects/CARSCP/repos/www-cars-com-static/browse"
+        },
+        {
+            "name": "carscp/www-cars-com-static-cobrand",
+            "clone": "https://mhellerogden@git.cars.com/scm/carscp/www-cars-com-static-cobrand.git",
+            "html": "https://git.cars.com/projects/CARSCP/repos/www-cars-com-static-cobrand/browse"
+        },
+        {
+            "name": "carscp/www-cars-com-static-config",
+            "clone": "https://mhellerogden@git.cars.com/scm/carscp/www-cars-com-static-config.git",
+            "html": "https://git.cars.com/projects/CARSCP/repos/www-cars-com-static-config/browse"
+        },
+        {
+            "name": "carscp/www-cars-com-static-storage",
+            "clone": "https://mhellerogden@git.cars.com/scm/carscp/www-cars-com-static-storage.git",
+            "html": "https://git.cars.com/projects/CARSCP/repos/www-cars-com-static-storage/browse"
+        },
+        {
+            "name": "carsrlsmgmt/FT-env-configs",
+            "clone": "https://mhellerogden@git.cars.com/scm/carsrlsmgmt/ft-env-configs.git",
+            "html": "https://git.cars.com/projects/CARSRLSMGMT/repos/ft-env-configs/browse"
+        },
+        {
+            "name": "carsrlsmgmt/IT-env-configs",
+            "clone": "https://mhellerogden@git.cars.com/scm/carsrlsmgmt/it-env-configs.git",
+            "html": "https://git.cars.com/projects/CARSRLSMGMT/repos/it-env-configs/browse"
+        },
+        {
+            "name": "carsrlsmgmt/Prod-env-configs",
+            "clone": "https://mhellerogden@git.cars.com/scm/carsrlsmgmt/prod-env-configs.git",
+            "html": "https://git.cars.com/projects/CARSRLSMGMT/repos/prod-env-configs/browse"
+        },
+        {
+            "name": "carsrlsmgmt/dev-env-configs",
+            "clone": "https://mhellerogden@git.cars.com/scm/carsrlsmgmt/dev-env-configs.git",
+            "html": "https://git.cars.com/projects/CARSRLSMGMT/repos/dev-env-configs/browse"
+        },
+        {
+            "name": "carsrlsmgmt/magneto",
+            "clone": "https://mhellerogden@git.cars.com/scm/carsrlsmgmt/magneto.git",
+            "html": "https://git.cars.com/projects/CARSRLSMGMT/repos/magneto/browse"
+        },
+        {
+            "name": "mp/cars-adaptive-poc-vertical",
+            "clone": "https://mhellerogden@git.cars.com/scm/mp/cars-adaptive-poc-vertical.git",
+            "html": "https://git.cars.com/projects/MP/repos/cars-adaptive-poc-vertical/browse"
+        },
+        {
+            "name": "mp/cars-automation-examples",
+            "clone": "https://mhellerogden@git.cars.com/scm/mp/cars-automation-examples.git",
+            "html": "https://git.cars.com/projects/MP/repos/cars-automation-examples/browse"
+        },
+        {
+            "name": "mp/cars-ess-vertical",
+            "clone": "https://mhellerogden@git.cars.com/scm/mp/cars-ess-vertical.git",
+            "html": "https://git.cars.com/projects/MP/repos/cars-ess-vertical/browse"
+        },
+        {
+            "name": "mp/cars-iso-component",
+            "clone": "https://mhellerogden@git.cars.com/scm/mp/cars-iso-component.git",
+            "html": "https://git.cars.com/projects/MP/repos/cars-iso-component/browse"
+        },
+        {
+            "name": "mp/drivetrain",
+            "clone": "https://mhellerogden@git.cars.com/scm/mp/drivetrain.git",
+            "html": "https://git.cars.com/projects/MP/repos/drivetrain/browse"
+        },
+        {
+            "name": "mp/foo-bar",
+            "clone": "https://mhellerogden@git.cars.com/scm/mp/foo-bar.git",
+            "html": "https://git.cars.com/projects/MP/repos/foo-bar/browse"
+        },
+        {
+            "name": "mp/foo-static",
+            "clone": "https://mhellerogden@git.cars.com/scm/mp/foo-static.git",
+            "html": "https://git.cars.com/projects/MP/repos/foo-static/browse"
+        },
+        {
+            "name": "mp/hud-metrics-api-node-poc",
+            "clone": "https://mhellerogden@git.cars.com/scm/mp/hud-metrics-api-node-poc.git",
+            "html": "https://git.cars.com/projects/MP/repos/hud-metrics-api-node-poc/browse"
+        },
+        {
+            "name": "sand/npm-publish",
+            "clone": "https://mhellerogden@git.cars.com/scm/sand/npm-publish.git",
+            "html": "https://git.cars.com/projects/SAND/repos/npm-publish/browse"
+        },
+        {
+            "name": "sand/www-cars-com-rendering",
+            "clone": "https://mhellerogden@git.cars.com/scm/sand/www-cars-com-rendering.git",
+            "html": "https://git.cars.com/projects/SAND/repos/www-cars-com-rendering/browse"
+        },
+        {
+            "name": "sand/www-cars-com-static",
+            "clone": "https://mhellerogden@git.cars.com/scm/sand/www-cars-com-static.git",
+            "html": "https://git.cars.com/projects/SAND/repos/www-cars-com-static/browse"
+        },
+        {
+            "name": "sell/cars-sell-vertical",
+            "clone": "https://mhellerogden@git.cars.com/scm/sell/cars-sell-vertical.git",
+            "html": "https://git.cars.com/projects/SELL/repos/cars-sell-vertical/browse"
+        },
+        {
+            "name": "npm/angular-lib-seed",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/angular-lib-seed.git",
+            "html": "https://git.cars.com/projects/NPM/repos/angular-lib-seed/browse"
+        },
+        {
+            "name": "npm/base-application",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/base-application.git",
+            "html": "https://git.cars.com/projects/NPM/repos/base-application/browse"
+        },
+        {
+            "name": "npm/car-party",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/car-party.git",
+            "html": "https://git.cars.com/projects/NPM/repos/car-party/browse"
+        },
+        {
+            "name": "npm/cars-360-view",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/cars-360-view.git",
+            "html": "https://git.cars.com/projects/NPM/repos/cars-360-view/browse"
+        },
+        {
+            "name": "npm/cars-als-client",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/cars-als-client.git",
+            "html": "https://git.cars.com/projects/NPM/repos/cars-als-client/browse"
+        },
+        {
+            "name": "npm/cars-angular-user-data",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/cars-angular-user-data.git",
+            "html": "https://git.cars.com/projects/NPM/repos/cars-angular-user-data/browse"
+        },
+        {
+            "name": "npm/cars-automation-framework",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/cars-automation-framework.git",
+            "html": "https://git.cars.com/projects/NPM/repos/cars-automation-framework/browse"
+        },
+        {
+            "name": "npm/cars-api-seed",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/cars-api-seed.git",
+            "html": "https://git.cars.com/projects/NPM/repos/cars-api-seed/browse"
+        },
+        {
+            "name": "npm/cars-brightcove-client",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/cars-brightcove-client.git",
+            "html": "https://git.cars.com/projects/NPM/repos/cars-brightcove-client/browse"
+        },
+        {
+            "name": "npm/cars-canonical-helpers",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/cars-canonical-helpers.git",
+            "html": "https://git.cars.com/projects/NPM/repos/cars-canonical-helpers/browse"
+        },
+        {
+            "name": "npm/cars-certified-pre-owned-client",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/cars-certified-pre-owned-client.git",
+            "html": "https://git.cars.com/projects/NPM/repos/cars-certified-pre-owned-client/browse"
+        },
+        {
+            "name": "npm/cars-cics-client",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/cars-cics-client.git",
+            "html": "https://git.cars.com/projects/NPM/repos/cars-cics-client/browse"
+        },
+        {
+            "name": "npm/cars-collaborative-filtering-client",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/cars-collaborative-filtering-client.git",
+            "html": "https://git.cars.com/projects/NPM/repos/cars-collaborative-filtering-client/browse"
+        },
+        {
+            "name": "npm/cars-common",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/cars-common.git",
+            "html": "https://git.cars.com/projects/NPM/repos/cars-common/browse"
+        },
+        {
+            "name": "npm/cars-common-components",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/cars-common-components.git",
+            "html": "https://git.cars.com/projects/NPM/repos/cars-common-components/browse"
+        },
+        {
+            "name": "npm/cars-config",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/cars-config.git",
+            "html": "https://git.cars.com/projects/NPM/repos/cars-config/browse"
+        },
+        {
+            "name": "npm/cars-config-client",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/cars-config-client.git",
+            "html": "https://git.cars.com/projects/NPM/repos/cars-config-client/browse"
+        },
+        {
+            "name": "npm/cars-consumer-reviews-client",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/cars-consumer-reviews-client.git",
+            "html": "https://git.cars.com/projects/NPM/repos/cars-consumer-reviews-client/browse"
+        },
+        {
+            "name": "npm/cars-content",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/cars-content.git",
+            "html": "https://git.cars.com/projects/NPM/repos/cars-content/browse"
+        },
+        {
+            "name": "npm/cars-coreshopping-client",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/cars-coreshopping-client.git",
+            "html": "https://git.cars.com/projects/NPM/repos/cars-coreshopping-client/browse"
+        },
+        {
+            "name": "npm/cars-coreshopping-rest",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/cars-coreshopping-rest.git",
+            "html": "https://git.cars.com/projects/NPM/repos/cars-coreshopping-rest/browse"
+        },
+        {
+            "name": "npm/cars-dealer-common",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/cars-dealer-common.git",
+            "html": "https://git.cars.com/projects/NPM/repos/cars-dealer-common/browse"
+        },
+        {
+            "name": "npm/cars-document-generator",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/cars-document-generator.git",
+            "html": "https://git.cars.com/projects/NPM/repos/cars-document-generator/browse"
+        },
+        {
+            "name": "npm/cars-document-generator-client",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/cars-document-generator-client.git",
+            "html": "https://git.cars.com/projects/NPM/repos/cars-document-generator-client/browse"
+        },
+        {
+            "name": "npm/cars-expert-reviews-client",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/cars-expert-reviews-client.git",
+            "html": "https://git.cars.com/projects/NPM/repos/cars-expert-reviews-client/browse"
+        },
+        {
+            "name": "npm/cars-feature-links-client",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/cars-feature-links-client.git",
+            "html": "https://git.cars.com/projects/NPM/repos/cars-feature-links-client/browse"
+        },
+        {
+            "name": "npm/cars-fingerprint",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/cars-fingerprint.git",
+            "html": "https://git.cars.com/projects/NPM/repos/cars-fingerprint/browse"
+        },
+        {
+            "name": "npm/cars-functional-spec-reporter",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/cars-functional-spec-reporter.git",
+            "html": "https://git.cars.com/projects/NPM/repos/cars-functional-spec-reporter/browse"
+        },
+        {
+            "name": "npm/cars-gms-client",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/cars-gms-client.git",
+            "html": "https://git.cars.com/projects/NPM/repos/cars-gms-client/browse"
+        },
+        {
+            "name": "npm/cars-inventory-search-client",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/cars-inventory-search-client.git",
+            "html": "https://git.cars.com/projects/NPM/repos/cars-inventory-search-client/browse"
+        },
+        {
+            "name": "npm/cars-mdis-client",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/cars-mdis-client.git",
+            "html": "https://git.cars.com/projects/NPM/repos/cars-mdis-client/browse"
+        },
+        {
+            "name": "npm/cars-mediainquiry-client",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/cars-mediainquiry-client.git",
+            "html": "https://git.cars.com/projects/NPM/repos/cars-mediainquiry-client/browse"
+        },
+        {
+            "name": "npm/cars-memory-cache",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/cars-memory-cache.git",
+            "html": "https://git.cars.com/projects/NPM/repos/cars-memory-cache/browse"
+        },
+        {
+            "name": "npm/cars-mlss-client",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/cars-mlss-client.git",
+            "html": "https://git.cars.com/projects/NPM/repos/cars-mlss-client/browse"
+        },
+        {
+            "name": "npm/cars-mocha-handlebars",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/cars-mocha-handlebars.git",
+            "html": "https://git.cars.com/projects/NPM/repos/cars-mocha-handlebars/browse"
+        },
+        {
+            "name": "npm/cars-mocks",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/cars-mocks.git",
+            "html": "https://git.cars.com/projects/NPM/repos/cars-mocks/browse"
+        },
+        {
+            "name": "npm/cars-model-listing-aggregate-client",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/cars-model-listing-aggregate-client.git",
+            "html": "https://git.cars.com/projects/NPM/repos/cars-model-listing-aggregate-client/browse"
+        },
+        {
+            "name": "npm/cars-mvis-client",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/cars-mvis-client.git",
+            "html": "https://git.cars.com/projects/NPM/repos/cars-mvis-client/browse"
+        },
+        {
+            "name": "npm/cars-news-components",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/cars-news-components.git",
+            "html": "https://git.cars.com/projects/NPM/repos/cars-news-components/browse"
+        },
+        {
+            "name": "npm/cars-ng-ad",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/cars-ng-ad.git",
+            "html": "https://git.cars.com/projects/NPM/repos/cars-ng-ad/browse"
+        },
+        {
+            "name": "npm/cars-ng-browser",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/cars-ng-browser.git",
+            "html": "https://git.cars.com/projects/NPM/repos/cars-ng-browser/browse"
+        },
+        {
+            "name": "npm/cars-ng-data-broker",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/cars-ng-data-broker.git",
+            "html": "https://git.cars.com/projects/NPM/repos/cars-ng-data-broker/browse"
+        },
+        {
+            "name": "npm/cars-ng-feature-flag",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/cars-ng-feature-flag.git",
+            "html": "https://git.cars.com/projects/NPM/repos/cars-ng-feature-flag/browse"
+        },
+        {
+            "name": "npm/cars-ng-form",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/cars-ng-form.git",
+            "html": "https://git.cars.com/projects/NPM/repos/cars-ng-form/browse"
+        },
+        {
+            "name": "npm/cars-ng-google-maps",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/cars-ng-google-maps.git",
+            "html": "https://git.cars.com/projects/NPM/repos/cars-ng-google-maps/browse"
+        },
+        {
+            "name": "npm/cars-ng-impression-pixel",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/cars-ng-impression-pixel.git",
+            "html": "https://git.cars.com/projects/NPM/repos/cars-ng-impression-pixel/browse"
+        },
+        {
+            "name": "npm/cars-ng-mvis",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/cars-ng-mvis.git",
+            "html": "https://git.cars.com/projects/NPM/repos/cars-ng-mvis/browse"
+        },
+        {
+            "name": "npm/cars-ng-tracking",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/cars-ng-tracking.git",
+            "html": "https://git.cars.com/projects/NPM/repos/cars-ng-tracking/browse"
+        },
+        {
+            "name": "npm/cars-ng-user",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/cars-ng-user.git",
+            "html": "https://git.cars.com/projects/NPM/repos/cars-ng-user/browse"
+        },
+        {
+            "name": "npm/cars-ops-client",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/cars-ops-client.git",
+            "html": "https://git.cars.com/projects/NPM/repos/cars-ops-client/browse"
+        },
+        {
+            "name": "npm/cars-optimizely-client",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/cars-optimizely-client.git",
+            "html": "https://git.cars.com/projects/NPM/repos/cars-optimizely-client/browse"
+        },
+        {
+            "name": "npm/cars-optimizely-manager",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/cars-optimizely-manager.git",
+            "html": "https://git.cars.com/projects/NPM/repos/cars-optimizely-manager/browse"
+        },
+        {
+            "name": "npm/cars-performance-metrics",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/cars-performance-metrics.git",
+            "html": "https://git.cars.com/projects/NPM/repos/cars-performance-metrics/browse"
+        },
+        {
+            "name": "npm/cars-plate-to-vin-client",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/cars-plate-to-vin-client.git",
+            "html": "https://git.cars.com/projects/NPM/repos/cars-plate-to-vin-client/browse"
+        },
+        {
+            "name": "npm/cars-poll-until",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/cars-poll-until.git",
+            "html": "https://git.cars.com/projects/NPM/repos/cars-poll-until/browse"
+        },
+        {
+            "name": "npm/cars-recall-master-client",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/cars-recall-master-client.git",
+            "html": "https://git.cars.com/projects/NPM/repos/cars-recall-master-client/browse"
+        },
+        {
+            "name": "npm/cars-rendering-bootstrap",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/cars-rendering-bootstrap.git",
+            "html": "https://git.cars.com/projects/NPM/repos/cars-rendering-bootstrap/browse"
+        },
+        {
+            "name": "npm/cars-rendering-cargo",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/cars-rendering-cargo.git",
+            "html": "https://git.cars.com/projects/NPM/repos/cars-rendering-cargo/browse"
+        },
+        {
+            "name": "npm/cars-rendering-service",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/cars-rendering-service.git",
+            "html": "https://git.cars.com/projects/NPM/repos/cars-rendering-service/browse"
+        },
+        {
+            "name": "npm/cars-request",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/cars-request.git",
+            "html": "https://git.cars.com/projects/NPM/repos/cars-request/browse"
+        },
+        {
+            "name": "npm/cars-research-client",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/cars-research-client.git",
+            "html": "https://git.cars.com/projects/NPM/repos/cars-research-client/browse"
+        },
+        {
+            "name": "npm/cars-seo-data-service",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/cars-seo-data-service.git",
+            "html": "https://git.cars.com/projects/NPM/repos/cars-seo-data-service/browse"
+        },
+        {
+            "name": "npm/cars-service-coupons-ags-client",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/cars-service-coupons-ags-client.git",
+            "html": "https://git.cars.com/projects/NPM/repos/cars-service-coupons-ags-client/browse"
+        },
+        {
+            "name": "npm/cars-service-estimate-ags-client",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/cars-service-estimate-ags-client.git",
+            "html": "https://git.cars.com/projects/NPM/repos/cars-service-estimate-ags-client/browse"
+        },
+        {
+            "name": "npm/cars-service-ping",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/cars-service-ping.git",
+            "html": "https://git.cars.com/projects/NPM/repos/cars-service-ping/browse"
+        },
+        {
+            "name": "npm/cars-slack-firechef",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/cars-slack-firechef.git",
+            "html": "https://git.cars.com/projects/NPM/repos/cars-slack-firechef/browse"
+        },
+        {
+            "name": "npm/cars-slack-firechief",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/cars-slack-firechief.git",
+            "html": "https://git.cars.com/projects/NPM/repos/cars-slack-firechief/browse"
+        },
+        {
+            "name": "npm/cars-sms-publishing",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/cars-sms-publishing.git",
+            "html": "https://git.cars.com/projects/NPM/repos/cars-sms-publishing/browse"
+        },
+        {
+            "name": "npm/cars-srgs-client",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/cars-srgs-client.git",
+            "html": "https://git.cars.com/projects/NPM/repos/cars-srgs-client/browse"
+        },
+        {
+            "name": "npm/cars-srp-seo-data-client",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/cars-srp-seo-data-client.git",
+            "html": "https://git.cars.com/projects/NPM/repos/cars-srp-seo-data-client/browse"
+        },
+        {
+            "name": "npm/cars-static-bootstrap",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/cars-static-bootstrap.git",
+            "html": "https://git.cars.com/projects/NPM/repos/cars-static-bootstrap/browse"
+        },
+        {
+            "name": "npm/cars-static-seed",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/cars-static-seed.git",
+            "html": "https://git.cars.com/projects/NPM/repos/cars-static-seed/browse"
+        },
+        {
+            "name": "npm/cars-ui",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/cars-ui.git",
+            "html": "https://git.cars.com/projects/NPM/repos/cars-ui/browse"
+        },
+        {
+            "name": "npm/cars-ui-angular",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/cars-ui-angular.git",
+            "html": "https://git.cars.com/projects/NPM/repos/cars-ui-angular/browse"
+        },
+        {
+            "name": "npm/cars-url-translate-client",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/cars-url-translate-client.git",
+            "html": "https://git.cars.com/projects/NPM/repos/cars-url-translate-client/browse"
+        },
+        {
+            "name": "npm/cars-vehicle-loan-rate-client",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/cars-vehicle-loan-rate-client.git",
+            "html": "https://git.cars.com/projects/NPM/repos/cars-vehicle-loan-rate-client/browse"
+        },
+        {
+            "name": "npm/cars-vehicle-price-range-client",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/cars-vehicle-price-range-client.git",
+            "html": "https://git.cars.com/projects/NPM/repos/cars-vehicle-price-range-client/browse"
+        },
+        {
+            "name": "npm/cars-verification-tools",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/cars-verification-tools.git",
+            "html": "https://git.cars.com/projects/NPM/repos/cars-verification-tools/browse"
+        },
+        {
+            "name": "npm/cars-vertical-foo",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/cars-vertical-foo.git",
+            "html": "https://git.cars.com/projects/NPM/repos/cars-vertical-foo/browse"
+        },
+        {
+            "name": "npm/cars-vertical-seed",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/cars-vertical-seed.git",
+            "html": "https://git.cars.com/projects/NPM/repos/cars-vertical-seed/browse"
+        },
+        {
+            "name": "npm/cars-windshield-common",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/cars-windshield-common.git",
+            "html": "https://git.cars.com/projects/NPM/repos/cars-windshield-common/browse"
+        },
+        {
+            "name": "npm/cars-windshield-lib-seed",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/cars-windshield-lib-seed.git",
+            "html": "https://git.cars.com/projects/NPM/repos/cars-windshield-lib-seed/browse"
+        },
+        {
+            "name": "npm/cars-windshield-manifest",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/cars-windshield-manifest.git",
+            "html": "https://git.cars.com/projects/NPM/repos/cars-windshield-manifest/browse"
+        },
+        {
+            "name": "npm/cars-years-service",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/cars-years-service.git",
+            "html": "https://git.cars.com/projects/NPM/repos/cars-years-service/browse"
+        },
+        {
+            "name": "npm/cars-ymmt-client",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/cars-ymmt-client.git",
+            "html": "https://git.cars.com/projects/NPM/repos/cars-ymmt-client/browse"
+        },
+        {
+            "name": "npm/chassisjs",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/chassisjs.git",
+            "html": "https://git.cars.com/projects/NPM/repos/chassisjs/browse"
+        },
+        {
+            "name": "npm/check-commented-files",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/check-commented-files.git",
+            "html": "https://git.cars.com/projects/NPM/repos/check-commented-files/browse"
+        },
+        {
+            "name": "npm/es6-module-poc",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/es6-module-poc.git",
+            "html": "https://git.cars.com/projects/NPM/repos/es6-module-poc/browse"
+        },
+        {
+            "name": "npm/generator-cars-angular",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/generator-cars-angular.git",
+            "html": "https://git.cars.com/projects/NPM/repos/generator-cars-angular/browse"
+        },
+        {
+            "name": "npm/generator-cars-static",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/generator-cars-static.git",
+            "html": "https://git.cars.com/projects/NPM/repos/generator-cars-static/browse"
+        },
+        {
+            "name": "npm/generator-cars-static-component",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/generator-cars-static-component.git",
+            "html": "https://git.cars.com/projects/NPM/repos/generator-cars-static-component/browse"
+        },
+        {
+            "name": "npm/generator-cars-vertical",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/generator-cars-vertical.git",
+            "html": "https://git.cars.com/projects/NPM/repos/generator-cars-vertical/browse"
+        },
+        {
+            "name": "npm/generator-cars-windshield",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/generator-cars-windshield.git",
+            "html": "https://git.cars.com/projects/NPM/repos/generator-cars-windshield/browse"
+        },
+        {
+            "name": "npm/gulp-lint-blame",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/gulp-lint-blame.git",
+            "html": "https://git.cars.com/projects/NPM/repos/gulp-lint-blame/browse"
+        },
+        {
+            "name": "npm/hapi-lowercase-urls",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/hapi-lowercase-urls.git",
+            "html": "https://git.cars.com/projects/NPM/repos/hapi-lowercase-urls/browse"
+        },
+        {
+            "name": "npm/homepage-vertical",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/homepage-vertical.git",
+            "html": "https://git.cars.com/projects/NPM/repos/homepage-vertical/browse"
+        },
+        {
+            "name": "npm/hotwirejs",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/hotwirejs.git",
+            "html": "https://git.cars.com/projects/NPM/repos/hotwirejs/browse"
+        },
+        {
+            "name": "npm/karma-cars-spec-reporter",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/karma-cars-spec-reporter.git",
+            "html": "https://git.cars.com/projects/NPM/repos/karma-cars-spec-reporter/browse"
+        },
+        {
+            "name": "npm/lcov-istanbul-to-sonar",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/lcov-istanbul-to-sonar.git",
+            "html": "https://git.cars.com/projects/NPM/repos/lcov-istanbul-to-sonar/browse"
+        },
+        {
+            "name": "npm/node-hud",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/node-hud.git",
+            "html": "https://git.cars.com/projects/NPM/repos/node-hud/browse"
+        },
+        {
+            "name": "npm/owcs-rest",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/owcs-rest.git",
+            "html": "https://git.cars.com/projects/NPM/repos/owcs-rest/browse"
+        },
+        {
+            "name": "npm/owcs-rest-plugin-cars",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/owcs-rest-plugin-cars.git",
+            "html": "https://git.cars.com/projects/NPM/repos/owcs-rest-plugin-cars/browse"
+        },
+        {
+            "name": "npm/pdf-upload",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/pdf-upload.git",
+            "html": "https://git.cars.com/projects/NPM/repos/pdf-upload/browse"
+        },
+        {
+            "name": "npm/profiles-vertical",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/profiles-vertical.git",
+            "html": "https://git.cars.com/projects/NPM/repos/profiles-vertical/browse"
+        },
+        {
+            "name": "npm/trackif-api-js",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/trackif-api-js.git",
+            "html": "https://git.cars.com/projects/NPM/repos/trackif-api-js/browse"
+        },
+        {
+            "name": "npm/truckerjs",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/truckerjs.git",
+            "html": "https://git.cars.com/projects/NPM/repos/truckerjs/browse"
+        },
+        {
+            "name": "npm/vdp-vertical",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/vdp-vertical.git",
+            "html": "https://git.cars.com/projects/NPM/repos/vdp-vertical/browse"
+        },
+        {
+            "name": "npm/video-vertical",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/video-vertical.git",
+            "html": "https://git.cars.com/projects/NPM/repos/video-vertical/browse"
+        },
+        {
+            "name": "npm/windshieldjs",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/windshieldjs.git",
+            "html": "https://git.cars.com/projects/NPM/repos/windshieldjs/browse"
+        },
+        {
+            "name": "npm/www-cars-com-boilerplate",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/www-cars-com-boilerplate.git",
+            "html": "https://git.cars.com/projects/NPM/repos/www-cars-com-boilerplate/browse"
+        },
+        {
+            "name": "npm/www-cars-com-rendering",
+            "clone": "https://mhellerogden@git.cars.com/scm/npm/www-cars-com-rendering.git",
+            "html": "https://git.cars.com/projects/NPM/repos/www-cars-com-rendering/browse"
+        },
+        {
+            "name": "sr/service-repair-vertical",
+            "clone": "https://mhellerogden@git.cars.com/scm/sr/service-repair-vertical.git",
+            "html": "https://git.cars.com/projects/SR/repos/service-repair-vertical/browse"
+        },
+        {
+            "name": "shop/expert-review-service-2.0-apigee",
+            "clone": "https://mhellerogden@git.cars.com/scm/shop/expert-review-service-2.0-apigee.git",
+            "html": "https://git.cars.com/projects/SHOP/repos/expert-review-service-2.0-apigee/browse"
+        },
+        {
+            "name": "shop/research-service-2.0",
+            "clone": "https://mhellerogden@git.cars.com/scm/shop/research-service-2.0.git",
+            "html": "https://git.cars.com/projects/SHOP/repos/research-service-2.0/browse"
+        },
+        {
+            "name": "vadr/Clay David Repo - jgomez",
+            "clone": "https://mhellerogden@git.cars.com/scm/vadr/clay-david-repo---jgomez.git",
+            "html": "https://git.cars.com/projects/VADR/repos/clay-david-repo---jgomez/browse"
+        },
+        {
+            "name": "vadr/Dash of Data - azhao",
+            "clone": "https://mhellerogden@git.cars.com/scm/vadr/dash-of-data---azhao.git",
+            "html": "https://git.cars.com/projects/VADR/repos/dash-of-data---azhao/browse"
+        },
+        {
+            "name": "vadr/Water Bottle Depot - jpecard",
+            "clone": "https://mhellerogden@git.cars.com/scm/vadr/water-bottle-depot---jpecard.git",
+            "html": "https://git.cars.com/projects/VADR/repos/water-bottle-depot---jpecard/browse"
+        }
+    ],
+    "github.com": [
+        {
+            "name": "machellerogden/meg",
+            "clone": "https://github.com/machellerogden/meg.git",
+            "html": "https://github.com/machellerogden/meg"
+        },
+        {
+            "name": "machellerogden/vim-istanbul",
+            "clone": "https://github.com/machellerogden/vim-istanbul.git",
+            "html": "https://github.com/machellerogden/vim-istanbul"
+        },
+        {
+            "name": "machellerogden/windshieldjs",
+            "clone": "https://github.com/machellerogden/windshieldjs.git",
+            "html": "https://github.com/machellerogden/windshieldjs"
+        },
+        {
+            "name": "carsdotcom/beacon",
+            "clone": "https://github.com/carsdotcom/beacon.git",
+            "html": "https://github.com/carsdotcom/beacon"
+        },
+        {
+            "name": "carsdotcom/bitcar",
+            "clone": "https://github.com/carsdotcom/bitcar.git",
+            "html": "https://github.com/carsdotcom/bitcar"
+        },
+        {
+            "name": "carsdotcom/cars-rendering-bootstrap",
+            "clone": "https://github.com/carsdotcom/cars-rendering-bootstrap.git",
+            "html": "https://github.com/carsdotcom/cars-rendering-bootstrap"
+        },
+        {
+            "name": "carsdotcom/cars-ui-angular",
+            "clone": "https://github.com/carsdotcom/cars-ui-angular.git",
+            "html": "https://github.com/carsdotcom/cars-ui-angular"
+        },
+        {
+            "name": "carsdotcom/cars-vertical-seed",
+            "clone": "https://github.com/carsdotcom/cars-vertical-seed.git",
+            "html": "https://github.com/carsdotcom/cars-vertical-seed"
+        },
+        {
+            "name": "carsdotcom/generator-cars-vertical",
+            "clone": "https://github.com/carsdotcom/generator-cars-vertical.git",
+            "html": "https://github.com/carsdotcom/generator-cars-vertical"
+        },
+        {
+            "name": "carsdotcom/windshieldjs",
+            "clone": "https://github.com/carsdotcom/windshieldjs.git",
+            "html": "https://github.com/carsdotcom/windshieldjs"
+        },
+        {
+            "name": "carsdotcom/www-cars-com-rendering",
+            "clone": "https://github.com/carsdotcom/www-cars-com-rendering.git",
+            "html": "https://github.com/carsdotcom/www-cars-com-rendering"
+        },
+        {
+            "name": "carsdotcom/www-cars-com-static",
+            "clone": "https://github.com/carsdotcom/www-cars-com-static.git",
+            "html": "https://github.com/carsdotcom/www-cars-com-static"
+        },
+        {
+            "name": "bitovi/cars",
+            "clone": "https://github.com/bitovi/cars.git",
+            "html": "https://github.com/bitovi/cars"
+        }
+    ]
+}
