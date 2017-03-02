@@ -98,6 +98,14 @@ bit --clone-all {searchTerm}
 
 This will clone ALL repos which match the `searchTerm`. If `searchTerm` is omitted it will clone ALL repos in your local cache. You will be prompted to confirm your intention.
 
+### Sync Existing
+
+```
+bit --sync-existing
+```
+
+This will add any existing repos in your bitcar workspace to your cache if they are not already there. Run this after each `--refresh`. This is particularly useful if you are using bitcar to manage your GOPATH.
+
 ### Force Latest
 
 ```
