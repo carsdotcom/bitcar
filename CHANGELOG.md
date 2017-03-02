@@ -1,7 +1,14 @@
 ## Change Log
 
-### upcoming (2017/02/28 20:51 +00:00)
-- [adc248a](https://github.com/carsdotcom/bitcar/commit/adc248a429debf0db797f318934bb3fca20da3fe) updating README (@machellerogden)
+### upcoming (2017/03/02 20:36 +00:00)
+- [f77615f](https://github.com/carsdotcom/bitcar/commit/f77615fd9017e3cf285e848b93ac4c84bf6c03f6) adding a README entry for --sync-existing (@machellerogden)
+- [144907b](https://github.com/carsdotcom/bitcar/commit/144907b8beffe97ce034dad56a0cea3d54646f53) fixing bug with sync-existing where it would drop entries from cache when attempting to merge existing repo entries (@machellerogden)
+- [b87ce6d](https://github.com/carsdotcom/bitcar/commit/b87ce6dcd78823bf9a6d2b447b273fe1b5db99b6) experimenting with syncing existing local directories into cache (@machellerogden)
+- [5749f71](https://github.com/carsdotcom/bitcar/commit/5749f714f82d55c8963132628ac6a3a9dd39d3ec) updating gif (@machellerogden)
+
+### v1.5.1 (2017/02/28 20:51 +00:00)
+- [41ee0d0](https://github.com/carsdotcom/bitcar/commit/41ee0d05b707de0de6f6b4341f17893715eb4dbc) 1.5.1 (@machellerogden)
+- [d76ba36](https://github.com/carsdotcom/bitcar/commit/d76ba362bdc0616ea486701bf9cc0e6e6ac5dcdb) updating README (@machellerogden)
 - [8241bd9](https://github.com/carsdotcom/bitcar/commit/8241bd96d00baa4f83eda35de7890aec47db4dae) updating README (@machellerogden)
 - [4e71736](https://github.com/carsdotcom/bitcar/commit/4e71736fc16b1585582ff23653c016792b63dabc) adding gif to README (@machellerogden)
 - [d1b2ff0](https://github.com/carsdotcom/bitcar/commit/d1b2ff0dfcee00ee75de574ddd19ccdcd725a5a5) adding gif for README (@machellerogden)
