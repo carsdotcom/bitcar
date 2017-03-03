@@ -34,6 +34,29 @@ function setSearchTerm(options) {
     return searchTerm;
 }
 
+function mapToHandler(options) {
+        let { results, confirmMessage, errorMessage, handler } = options;
+        return Promise.all(_.map(results, lib.getSourceResult)).then((repos) => {
+            _.each(repos, (r) => output.log(r.name));
+            return inquirer.prompt([
+                {
+                    type: 'confirm',
+                    name: 'confirm',
+                    message: confirmMessage,
+                    default: false
+                }
+            ]).then((answers) => {
+                if (answers.confirm) {
+                    return Promise.resolve(repos).map(handler).then(() => {
+                        return { repoDir: workspaceDir };
+                    });
+                } else {
+                    throw new Error(errorMessage);
+                }
+            });
+        });
+}
+
 function cli(options) {
     let searchTerm = setSearchTerm(options);
 
@@ -56,48 +79,24 @@ function cli(options) {
         const sourceDataPromise = lib.getSourceData();
         const pathsPromise = sourceDataPromise.then(lib.getPaths).filter((v) => (new RegExp(searchTerm)).test(v));
         if (options.completions) {
-            return pathsPromise.map((repoPath) => _.tail(repoPath.split(path.sep)).join(path.sep))
+            return pathsPromise.map((result) => _.tail(result.split(path.sep)).join(path.sep))
                 .each(_.ary(output.log, 1));
         } else {
             return pathsPromise.then((results) => {
                 let resultPromise;
                 if (results.length && options['clone-all']) {
-                    return Promise.all(_.map(results, lib.getSourceResult)).then((repos) => {
-                        return inquirer.prompt([
-                            {
-                                type: 'confirm',
-                                name: 'confirm',
-                                message: 'Are you sure you want to clone ' + repos.length + ' repos?',
-                                default: false
-                            }
-                        ]).then((answers) => {
-                            if (answers.confirm) {
-                                return Promise.resolve(repos).map(lib.maybeClone).then(() => {
-                                    return { repoDir: workspaceDir };
-                                });
-                            } else {
-                                throw new Error('Clone All Aborted.');
-                            }
-                        });
+                    return mapToHandler({
+                        results,
+                        confirmMessage: 'Are you sure you want clone all of the above?',
+                        errorMessage: 'Clone all aborted',
+                        handler: lib.maybeClone
                     });
                 } else if (results.length && options['force-latest']) {
-                    return Promise.all(_.map(results, lib.getSourceResult)).then((repos) => {
-                        return inquirer.prompt([
-                            {
-                                type: 'confirm',
-                                name: 'confirm',
-                                message: 'Are you sure you want to force a hard reset to latest origin/master for ' + repos.length + ' repos?',
-                                default: false
-                            }
-                        ]).then((answers) => {
-                            if (answers.confirm) {
-                                return Promise.resolve(repos).map(lib.maybeClone).mapSeries(lib.forceLatest).then(() => {
-                                    return { repoDir: workspaceDir };
-                                });
-                            } else {
-                                throw new Error('Force Latest Aborted.');
-                            }
-                        });
+                    return mapToHandler({
+                        results,
+                        confirmMessage: 'Are you sure you want clean and force a hard reset to all of the above?',
+                        errorMessage: 'Force latest aborted',
+                        handler: lib.forceLatest
                     });
                 } else if (results.length > 1) {
                     resultPromise = inquirer.prompt([
