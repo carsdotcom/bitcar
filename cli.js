@@ -9,6 +9,10 @@ const output = require('./lib/output');
 
 module.exports = cli;
 
+process.on('SIGINT', () => {
+    process.exit(1);
+});
+
 function setSearchTerm(options) {
     let searchTerm;
     let defaultToCurrent = _.pick(options, [
