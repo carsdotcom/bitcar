@@ -5,7 +5,7 @@ exports.setupAnswers = {
     alias: 'bitcar',
     workspaceDir: path.normalize('./.bitcar-test'),
     drivers: [ 'github', 'bitbucket-server' ],
-    githubUsernames: [ 'carsdotcom' ],
+    githubUsernames: 'carsdotcom',
     bitbucketServerHost: 'git.cars.com'
 };
 

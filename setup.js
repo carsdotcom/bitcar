@@ -5,6 +5,7 @@ const path = require('path');
 const inquirer = require('inquirer');
 const os = require('os');
 const chalk = require('chalk');
+const output = require('./lib/output');
 
 module.exports = setup;
 
@@ -123,19 +124,19 @@ source $HOME/.bitcar/completions.sh
                 let updatedProfile = cleanProfile(profile) + profileContent;
                 fs.write(path.normalize(process.env.HOME + '/.zshrc'), updatedProfile);
             } else {
-                console.log('unsupported shell');
+                output.log('unsupported shell');
                 process.exit(1);
             }
 
             return fs.commit(function (err) {
                 if (err) return reject(err);
-                console.log('');
-                console.log('Bitcar setup was successful!');
-                console.log('');
-                console.log(chalk.bold.inverse('Enter `. ~/.bash_profile` and hit enter, or start a new terminal for changes to take effect.'));
-                console.log('');
-                console.log(chalk.underline('Please note you MUST use the command name you chose during setup (`' + answers.alias + '`) for the tool to work.'));
-                console.log(chalk.underline('Except for the setup command, DO NOT use the `bitcar` command directly'));
+                output.log('');
+                output.log('Bitcar setup was successful!');
+                output.log('');
+                output.log(chalk.bold.inverse('Enter `. ~/.bash_profile` and hit enter, or start a new terminal for changes to take effect.'));
+                output.log('');
+                output.log(chalk.underline('Please note you MUST use the command name you chose during setup (`' + answers.alias + '`) for the tool to work.'));
+                output.log(chalk.underline('Except for the setup command, DO NOT use the `bitcar` command directly'));
                 return resolve();
             });
         });
