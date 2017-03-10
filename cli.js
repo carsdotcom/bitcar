@@ -18,7 +18,8 @@ function setSearchTerm(options) {
     let defaultToWild = _.pick(options, [
         'completions',
         'clone-all',
-        'force-latest'
+        'force-latest',
+        'pull-all'
     ]);
     if (options._ && options._[0]) {
         searchTerm = options._[0];
@@ -47,7 +48,7 @@ function mapToHandler(options) {
                 }
             ]).then((answers) => {
                 if (answers.confirm) {
-                    return Promise.resolve(repos).map(handler).then(() => {
+                    return Promise.resolve(repos).mapSeries(handler).then(() => {
                         return { repoDir: workspaceDir };
                     });
                 } else {
@@ -97,6 +98,13 @@ function cli(options) {
                         confirmMessage: 'Are you sure you want clean and force a hard reset to all of the above?',
                         errorMessage: 'Force latest aborted',
                         handler: lib.forceLatest
+                    });
+                } else if (results.length && options['pull-all']) {
+                    return mapToHandler({
+                        results,
+                        confirmMessage: 'Are you sure you want pull all of the above?',
+                        errorMessage: 'Pull all aborted',
+                        handler: (r) => lib.maybeClone(r).then(lib.maybePull)
                     });
                 } else if (results.length > 1) {
                     resultPromise = inquirer.prompt([
