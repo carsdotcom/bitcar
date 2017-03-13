@@ -1,5 +1,10 @@
 # ![bitcar](https://raw.githubusercontent.com/carsdotcom/bitcar/master/resources/bitcar.png)
 
+[![NPM version](https://img.shields.io/npm/v/bitcar.svg)]()
+[![npm](https://img.shields.io/npm/dt/bitcar.svg)]()
+[![Travis](https://img.shields.io/travis/carsdotcom/bitcar.svg)]()
+[![GitHub stars](https://img.shields.io/github/stars/carsdotcom/bitcar.svg?style=social&label=Star)](https://github.com/carsdotcom/bitcar)
+
 > Seemlessly jump between repos from the command line.
 
 ----
