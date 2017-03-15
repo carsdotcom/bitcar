@@ -2,11 +2,11 @@
 /* istanbul ignore next */
 (function() {
 
-const cli = require('./cli');
+const router = require('./router');
 const argv = require('./argv');
 const setTarget = require('./lib/setTarget');
 
-cli(argv)
+router(argv)
     .then(setTarget)
     .catch((err) => {
         console.log(err.message);

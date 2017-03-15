@@ -7,7 +7,7 @@ chai.use(sinonChai);
 const chaiAsPromised = require('chai-as-promised');
 chai.use(chaiAsPromised);
 
-const cli = require('../cli');
+const router = require('../router');
 const fs = require('../lib/fs');
 const inquirer = require('inquirer');
 const path = require('path');
@@ -26,7 +26,7 @@ const schemas = require('./schemas');
 const mocks = require('./mocks');
 
 
-describe('the bitcar cli', () => {
+describe('the bitcar router', () => {
     let sandbox;
 
     beforeEach(() => {
@@ -54,7 +54,7 @@ describe('the bitcar cli', () => {
     describe('when called with version option', () => {
         it('should console log version and exit 0', () => {
             sandbox.stub(output, 'log');
-            return cli({ _: [ ], version: true }).then(() => {
+            return router({ _: [ ], version: true }).then(() => {
                 expect(output.log).to.have.been.calledWithMatch(sinon.match(/\d\.\d\.\d/));
             });
         });
@@ -63,14 +63,14 @@ describe('the bitcar cli', () => {
         describe('with no other options', () => {
             describe('for existing entry', () => {
                 it('should find existing entry for the search term in the cache - bitcar', () => {
-                    return cli({ _: [ 'bitcar' ] })
+                    return router({ _: [ 'bitcar' ] })
                         .then((result) => {
                             const resultValidation = schemas.result.validate(result);
                             expect(resultValidation.error).to.be.a('null');
                         });
                 });
                 it('should find existing entry for the search term in the cache - chassisjs', () => {
-                    return cli({ _: [ 'chassisjs' ] })
+                    return router({ _: [ 'chassisjs' ] })
                         .then((result) => {
                             const resultValidation = schemas.result.validate(result);
                             expect(resultValidation.error).to.be.a('null');
@@ -79,7 +79,7 @@ describe('the bitcar cli', () => {
             });
             describe('for non-existant entry', () => {
                 it('should reject with "No results." for non-existant entry for the search term in the cache - doesnotexist', () => {
-                    return expect(cli({ _: [ 'doesnotexist' ] })).to.eventually.be.rejectedWith('No results.');
+                    return expect(router({ _: [ 'doesnotexist' ] })).to.eventually.be.rejectedWith('No results.');
                 });
             });
         });
@@ -88,27 +88,27 @@ describe('the bitcar cli', () => {
         describe('with a search term', () => {
             describe('for existing entry', () => {
                 it('should find existing entry for the search term in the cache - bitcar', () => {
-                    return cli({ _: [ ], open: 'bitcar' })
+                    return router({ _: [ ], open: 'bitcar' })
                         .then((result) => {
                             const resultValidation = schemas.result.validate(result);
                             expect(resultValidation.error).to.be.a('null');
                         });
                 });
                 it('should open a browser corresponding for the search term in the cache - bitcar', () => {
-                    return cli({ _: [ ], open: 'bitcar' })
+                    return router({ _: [ ], open: 'bitcar' })
                         .then((result) => {
                             expect(browser.open).to.have.been.calledWith('https://github.com/carsdotcom/bitcar');
                         });
                 });
                 it('regardless of order, should open a browser corresponding for the search term in the cache - bitcar', () => {
-                    return cli({ _: [ 'bitcar' ], open: true })
+                    return router({ _: [ 'bitcar' ], open: true })
                         .then((result) => {
                             const resultValidation = schemas.result.validate(result);
                             expect(resultValidation.error).to.be.a('null');
                         });
                 });
                 it('regardless of order, should open a browser corresponding for the search term in the cache - bitcar', () => {
-                    return cli({ _: [ 'bitcar' ], open: true })
+                    return router({ _: [ 'bitcar' ], open: true })
                         .then((result) => {
                             expect(browser.open).to.have.been.calledWith('https://github.com/carsdotcom/bitcar');
                         });
@@ -116,7 +116,7 @@ describe('the bitcar cli', () => {
             });
             describe('for non-existant entry', () => {
                 it('should exit non-zero with a message of "No results."', () => {
-                    return expect(cli({ _: [ 'doesnotexist' ] })).to.eventually.be.rejectedWith('No results.');
+                    return expect(router({ _: [ 'doesnotexist' ] })).to.eventually.be.rejectedWith('No results.');
                 });
             });
         });
@@ -126,14 +126,14 @@ describe('the bitcar cli', () => {
                         sandbox.stub(process, 'cwd', () => '/Users/macheller-ogden/repos/github.com/carsdotcom/bitcar');
                 });
                 it('should find existing entry for the search term in the cache - bitcar', () => {
-                    return cli({ _: [ ], open: true })
+                    return router({ _: [ ], open: true })
                         .then((result) => {
                             const resultValidation = schemas.result.validate(result);
                             expect(resultValidation.error).to.be.a('null');
                         });
                 });
                 it('should open a browser corresponding to the current directory - bitcar', () => {
-                    return cli({ _: [ ], open: true })
+                    return router({ _: [ ], open: true })
                         .then((result) => {
                             expect(browser.open).to.have.been.calledWith('https://github.com/carsdotcom/bitcar');
                         });
@@ -141,7 +141,7 @@ describe('the bitcar cli', () => {
             });
             describe('when current working directory does not correspond to an entry in the cache', () => {
                 it('should exit non-zero with a message of "No results."', () => {
-                    return cli({ _: [ ], open: true })
+                    return router({ _: [ ], open: true })
                         .then((result) => {
                             expect(browser.open).to.have.been.calledWith('https://github.com/carsdotcom/bitcar');
                         });
@@ -153,14 +153,14 @@ describe('the bitcar cli', () => {
         describe('with a search term', () => {
             describe('for existing entry', () => {
                 it('should find existing entry for the search term in the cache - bitcar', () => {
-                    return cli({ _: [ ], edit: 'bitcar' })
+                    return router({ _: [ ], edit: 'bitcar' })
                         .then((result) => {
                             const resultValidation = schemas.result.validate(result);
                             expect(resultValidation.error).to.be.a('null');
                         });
                 });
                 it('regardless of order, find existing entry for the search term in the cache - bitcar', () => {
-                    return cli({ _: [ 'bitcar' ], edit: true })
+                    return router({ _: [ 'bitcar' ], edit: true })
                         .then((result) => {
                             const resultValidation = schemas.result.validate(result);
                             expect(resultValidation.error).to.be.a('null');
@@ -169,7 +169,7 @@ describe('the bitcar cli', () => {
             });
             describe('for non-existant entry', () => {
                 it('should exit non-zero with a message of "No results."', () => {
-                    return expect(cli({ _: [ 'doesnotexist' ], edit: true })).to.eventually.be.rejectedWith('No results.');
+                    return expect(router({ _: [ 'doesnotexist' ], edit: true })).to.eventually.be.rejectedWith('No results.');
                 });
             });
         });
@@ -179,7 +179,7 @@ describe('the bitcar cli', () => {
                         sandbox.stub(process, 'cwd', () => '/Users/macheller-ogden/repos/github.com/carsdotcom/bitcar');
                 });
                 it('should find existing entry for the search term in the cache - bitcar', () => {
-                    return cli({ _: [ ], edit: true })
+                    return router({ _: [ ], edit: true })
                         .then((result) => {
                             const resultValidation = schemas.result.validate(result);
                             expect(resultValidation.error).to.be.a('null');
@@ -195,14 +195,14 @@ describe('the bitcar cli', () => {
         describe('with a search term', () => {
             describe('for existing entry', () => {
                 it('should find existing entry for the search term in the cache - bitcar', () => {
-                    return cli({ _: [ ], completions: 'bitcar' })
+                    return router({ _: [ ], completions: 'bitcar' })
                         .then((results) => {
                             const resultsValidation = schemas.results.validate(results);
                             expect(resultsValidation.error).to.be.a('null');
                         });
                 });
                 it('regardless of order, find existing entry for the search term in the cache - bitcar', () => {
-                    return cli({ _: [ 'bitcar' ], completions: true })
+                    return router({ _: [ 'bitcar' ], completions: true })
                         .then((results) => {
                             const resultsValidation = schemas.results.validate(results);
                             expect(resultsValidation.error).to.be.a('null');
@@ -211,14 +211,14 @@ describe('the bitcar cli', () => {
             });
             describe('for non-existant entry', () => {
                 it('should exit non-zero with a message of "No results."', () => {
-                    return expect(cli({ _: [ 'doesnotexist' ], completions: true })).to.eventually.eql([]);
+                    return expect(router({ _: [ 'doesnotexist' ], completions: true })).to.eventually.eql([]);
                 });
             });
         });
         describe('without a search term', () => {
             describe('when current working directory corresponds to an entry in the cache', () => {
                 it('should find existing entry for the search term in the cache - bitcar', () => {
-                    return cli({ _: [ ], completions: true })
+                    return router({ _: [ ], completions: true })
                         .then((results) => {
                             const resultsValidation = schemas.results.validate(results);
                             expect(resultsValidation.error).to.be.a('null');
@@ -234,7 +234,7 @@ describe('the bitcar cli', () => {
         it('should call each configured driver', () => {
             sandbox.stub(drivers['bitbucket-server'], 'getConfiguredRepos', () => Promise.resolve([]));
             sandbox.stub(drivers.github, 'getConfiguredRepos', () => Promise.resolve([]));
-            return cli({ _: [ ], refresh: true })
+            return router({ _: [ ], refresh: true })
                 .then(() => {
                     expect(drivers['bitbucket-server'].getConfiguredRepos).to.have.been.called;
                     expect(drivers.github.getConfiguredRepos).to.have.been.called;
@@ -249,14 +249,14 @@ describe('the bitcar cli', () => {
         });
         it('should call axios request', () => {
             sandbox.stub(config, 'get', () => mocks.config);
-            return cli({ _: [ ], refresh: true })
+            return router({ _: [ ], refresh: true })
                 .then(() => {
                     expect(axios.request).to.have.been.called;
                 });
         });
         it('shouldn\'t make any requests if there is no config', () => {
             sandbox.stub(config, 'get', () => mocks.configWithoutBitbucketServer);
-            return cli({ _: [ ], refresh: true })
+            return router({ _: [ ], refresh: true })
                 .then(() => {
                     expect(axios.request).not.to.have.been.called;
                 });
@@ -270,21 +270,21 @@ describe('the bitcar cli', () => {
         });
         it('should call axios request', () => {
             sandbox.stub(config, 'get', () => mocks.config);
-            return cli({ _: [ ], refresh: true })
+            return router({ _: [ ], refresh: true })
                 .then(() => {
                     expect(axios.get).to.have.been.called;
                 });
         });
         it('should make requests for any usernames given in config', () => {
             sandbox.stub(config, 'get', () => mocks.configWithUsernames);
-            return cli({ _: [ ], refresh: true })
+            return router({ _: [ ], refresh: true })
                 .then(() => {
                     expect(axios.get).to.have.been.called;
                 });
         });
         it('shouldn\'t make any requests if there is no config', () => {
             sandbox.stub(config, 'get', () => mocks.configWithoutGithub);
-            return cli({ _: [ ], refresh: true })
+            return router({ _: [ ], refresh: true })
                 .then(() => {
                     expect(axios.get).not.to.have.been.called;
                 });
