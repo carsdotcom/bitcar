@@ -1,6 +1,30 @@
 ## Change Log
 
-### upcoming (2017/03/02 20:36 +00:00)
+### v1.5.6 (2017/03/15 15:16 +00:00)
+- [cf8561c](https://github.com/carsdotcom/bitcar/commit/cf8561c5686555282e40f541223e2e2e9535591d) 1.5.6 (@machellerogden)
+- [2d9cfc3](https://github.com/carsdotcom/bitcar/commit/2d9cfc3f70381d03ca0edbc48ac34afa830b74f7) clean up of routing pattern (@machellerogden)
+- [67f7656](https://github.com/carsdotcom/bitcar/commit/67f7656e5f73d92a40f1f0f9b4e23c2001beff72) travis build will not run properly so removing shield for time being (@machellerogden)
+- [c63c242](https://github.com/carsdotcom/bitcar/commit/c63c2421cd51e4c24f45b09bcfaf66d5b1f8844d) adding shrinkwrap (@machellerogden)
+- [e1b4270](https://github.com/carsdotcom/bitcar/commit/e1b4270c2fb595faa0c3edc5593bfcd1d608ec24) adding .travis.yml and README shields (@machellerogden)
+
+### v1.5.5 (2017/03/10 20:57 +00:00)
+- [19ddffe](https://github.com/carsdotcom/bitcar/commit/19ddffe8716f9c3c408719c6fc946d02f8bc04b0) 1.5.5 (@machellerogden)
+- [1ffaa3b](https://github.com/carsdotcom/bitcar/commit/1ffaa3b3f886d1ffded378dd520233e3b253a0ba) adding pull all (@machellerogden)
+- [6682f38](https://github.com/carsdotcom/bitcar/commit/6682f389e054e3ffa0c97721f290902f1635d295) starting on unit tests for setup (@machellerogden)
+- [879a885](https://github.com/carsdotcom/bitcar/commit/879a88596f10f39c4c30b71a7fd75eaeb49904a5) adding roadmap (@machellerogden)
+
+### v1.5.4 (2017/03/06 15:46 +00:00)
+- [d5c382b](https://github.com/carsdotcom/bitcar/commit/d5c382b0d358d189ad1f55765f566b183ffd46ea) 1.5.4 (@machellerogden)
+- [ee7a8a7](https://github.com/carsdotcom/bitcar/commit/ee7a8a710674951089591b78ea84574f2836a03a) various fixes and cleanup (@machellerogden)
+
+### v1.5.3 (2017/03/06 14:59 +00:00)
+- [d9cad3d](https://github.com/carsdotcom/bitcar/commit/d9cad3d0b9fb1b571ef3e61172da2667b22b6950) 1.5.3 (@machellerogden)
+- [e793e1b](https://github.com/carsdotcom/bitcar/commit/e793e1bd00045c75668474d576565f13423bd387) if user has n then try and use node 6 bin directly (@machellerogden)
+- [f5b4f0a](https://github.com/carsdotcom/bitcar/commit/f5b4f0a511235ebe9c0340d672249b97c4abfc39) cleaning up some action handlers (@machellerogden)
+
+### v1.5.2 (2017/03/02 20:37 +00:00)
+- [90f50c5](https://github.com/carsdotcom/bitcar/commit/90f50c549914537985fb2a39bd2e615a3acd39c4) 1.5.2 (@machellerogden)
+- [8dfd0c9](https://github.com/carsdotcom/bitcar/commit/8dfd0c96015ead679567570907f8edbda80a40d3) updating changelog (@machellerogden)
 - [f77615f](https://github.com/carsdotcom/bitcar/commit/f77615fd9017e3cf285e848b93ac4c84bf6c03f6) adding a README entry for --sync-existing (@machellerogden)
 - [144907b](https://github.com/carsdotcom/bitcar/commit/144907b8beffe97ce034dad56a0cea3d54646f53) fixing bug with sync-existing where it would drop entries from cache when attempting to merge existing repo entries (@machellerogden)
 - [b87ce6d](https://github.com/carsdotcom/bitcar/commit/b87ce6dcd78823bf9a6d2b447b273fe1b5db99b6) experimenting with syncing existing local directories into cache (@machellerogden)
