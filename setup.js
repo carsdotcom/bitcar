@@ -112,20 +112,18 @@ source $HOME/.bitcar/completions.sh
             fs.copyTpl(path.normalize(__dirname + '/dotfiles/completions.sh'), path.normalize(process.env.HOME + '/.bitcar/completions.sh'), answers);
             fs.copy(path.normalize(__dirname + '/dotfiles/strip_codes'), path.normalize(process.env.HOME + '/.bitcar/strip_codes'));
 
-            const SHELL = process.env.SHELL;
-            if (SHELL.match(/bash/)) {
+            if (fs.exists(path.normalize(process.env.HOME + '/.bash_profile'))) {
                 fs.copy(path.normalize(process.env.HOME + '/.bash_profile'), path.normalize(process.env.HOME + '/.bash_profile.bkup'));
                 let profile = fs.read(path.normalize(process.env.HOME + '/.bash_profile'));
                 let updatedProfile = cleanProfile(profile) + profileContent;
                 fs.write(path.normalize(process.env.HOME + '/.bash_profile'), updatedProfile);
-            } else if (SHELL.match(/zsh/)) {
+            }
+
+            if (fs.exists(path.normalize(process.env.HOME + '/.zshrc'))) {
                 fs.copy(path.normalize(process.env.HOME + '/.zshrc'), path.normalize(process.env.HOME + '/.zshrc.bkup'));
                 let profile = fs.read(path.normalize(process.env.HOME + '/.zshrc'));
                 let updatedProfile = cleanProfile(profile) + profileContent;
                 fs.write(path.normalize(process.env.HOME + '/.zshrc'), updatedProfile);
-            } else {
-                output.log('unsupported shell');
-                process.exit(1);
             }
 
             return fs.commit(function (err) {
@@ -133,7 +131,7 @@ source $HOME/.bitcar/completions.sh
                 output.log('');
                 output.log('Bitcar setup was successful!');
                 output.log('');
-                output.log(chalk.bold.inverse('Enter `. ~/.bash_profile` and hit enter, or start a new terminal for changes to take effect.'));
+                output.log(chalk.bold.inverse('Enter `. ~/.bash_profile` (or `. ~/.zshrc` if in zsh) and hit enter, or start a new terminal for changes to take effect.'));
                 output.log('');
                 output.log(chalk.underline('Please note you MUST use the command name you chose during setup (`' + answers.alias + '`) for the tool to work.'));
                 output.log(chalk.underline('Except for the setup command, DO NOT use the `bitcar` command directly'));

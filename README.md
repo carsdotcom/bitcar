@@ -13,9 +13,9 @@
 ## Requirements
 
    *  node 6.x.x or newer
-   *  bash 3 or newer
+   *  either bash 3+, or zsh 5+
 
-_zsh support coming soon..._
+Older versions of zsh may work, but are untested.
 
 ## Installation
 
