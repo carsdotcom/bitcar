@@ -2,12 +2,24 @@
 const _ = require('lodash');
 const axios = require('axios');
 const Promise = require('bluebird');
+const config = require('../../lib/config');
 
 module.exports =  {
+    createRepo,
     getConfiguredRepos,
     getOwnRepos,
     getReposFromUsernames
 };
+
+function createRepo(options) {
+    let githubConfig = _.find(config.get().drivers, { type: 'github' });
+    const url = `https://api.github.com/user/repos?access_token=${githubConfig.accessToken}`;
+    return axios.post(url, {
+        name: options.name,
+        description: "created by bitcar",
+        private: options.private || false
+    });
+}
 
 function getConfiguredRepos(config) {
     const githubConfig = _.find(config.drivers, { type: 'github' });

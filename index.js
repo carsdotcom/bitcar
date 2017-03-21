@@ -9,7 +9,7 @@ const setTarget = require('./lib/setTarget');
 router(argv)
     .then(setTarget)
     .catch((err) => {
-        console.log(err.message);
+        console.log(err.message || err);
         process.exit(1);
     });
 

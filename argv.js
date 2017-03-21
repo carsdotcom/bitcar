@@ -5,6 +5,7 @@ module.exports = require('minimist')(process.argv.slice(2), {
         version: 'v',
         open: 'o',
         refresh: 'r',
-        edit: 'e'
+        edit: 'e',
+        create: 'c'
     }
 });

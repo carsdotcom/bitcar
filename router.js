@@ -13,6 +13,7 @@ const getSourceResult = require('./lib/getSourceResult');
 const getPaths = require('./lib/getPaths');
 const maybeClone = require('./lib/maybeClone');
 const maybePull = require('./lib/maybePull');
+const createRepo = require('./lib/createRepo');
 const forceLatest = require('./lib/forceLatest');
 const openInBrowser = require('./lib/openInBrowser');
 
@@ -32,6 +33,10 @@ function router(options) {
 
     if (options['sync-existing']) {
         return syncExisting();
+    }
+
+    if (options['create']) {
+        return createRepo(searchTerm);
     }
 
     if (options.refresh) {
@@ -81,10 +86,9 @@ function router(options) {
                     throw new Error('No results.');
                 }
                 if (options.open) {
-                    resultPromise = resultPromise.then(openInBrowser).then(maybeClone);
-                } else {
-                    resultPromise = resultPromise.then(maybeClone);
+                    resultPromise = resultPromise.then(openInBrowser);
                 }
+                resultPromise = resultPromise.then(maybeClone);
                 return resultPromise;
             });
         }
