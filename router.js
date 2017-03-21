@@ -16,6 +16,7 @@ const maybePull = require('./lib/maybePull');
 const createRepo = require('./lib/createRepo');
 const forceLatest = require('./lib/forceLatest');
 const openInBrowser = require('./lib/openInBrowser');
+const status = require('./lib/status');
 
 module.exports = router;
 
@@ -63,6 +64,13 @@ function router(options) {
                         confirmMessage: 'Are you sure you want pull all of the above?',
                         errorMessage: 'Pull all aborted',
                         handler: (r) => maybeClone(r).then(maybePull)
+                    });
+                } else if (results.length && options['status-all']) {
+                    return mapToHandler({
+                        results,
+                        confirmMessage: 'Are you sure you want check status on all of the above?',
+                        errorMessage: 'Status all aborted',
+                        handler: (r) => status(r)
                     });
                 } else if (results.length && options['force-latest']) {
                     return mapToHandler({
