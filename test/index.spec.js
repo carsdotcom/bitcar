@@ -241,6 +241,20 @@ describe('the bitcar router', () => {
                 });
         });
     });
+    describe('create option', () => {
+        beforeEach(() => {
+            sandbox.stub(output, 'log');
+        });
+        describe('when the given repo name starts with github.com', () => {
+            it('should call the createRepo method on the github driver', () => {
+                sandbox.stub(drivers.github, 'createRepo', () => Promise.resolve([]));
+                return router({ _: [ ], create: 'github.com/foo/bar' })
+                    .then(() => {
+                        expect(drivers.github.createRepo).to.have.been.called;
+                    });
+            });
+        });
+    });
     describe('bitbucket-server driver', () => {
         beforeEach(() => {
             sandbox.stub(output, 'log');

@@ -118,6 +118,20 @@ bit --force-latest {searchTerm}
 
 This feature will likely be removed in the near future. It will clone ALL repos matching the `searchTerm` if they do not already exist on your local machine. If any given repo matching the `searchTerm` already exists on your local machine it will be cleaned and hard reset to origin/master.
 
+### Create Repo
+
+```
+bit --create {repoName}
+```
+
+```
+bit -c {repoName}
+```
+
+Currently this only works for GitHub. Please note you must include the domain in the repo name. i.e. `bit -c github.com/machellerogden/foo`.
+
+This feature will remain experimental until more options are added. For the time being, it will create a public repo on your github account. After creating the repo you will need to run a cache refresh in order for bitcar to find the new repo.
+
 
 ## License
 
