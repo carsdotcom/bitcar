@@ -110,14 +110,6 @@ bit --sync-existing
 
 This will add any existing repos in your bitcar workspace to your cache if they are not already there. Run this after each `--refresh`. This is particularly useful if you are using bitcar to manage your GOPATH.
 
-### Force Latest
-
-```
-bit --force-latest {searchTerm}
-```
-
-This feature will likely be removed in the near future. It will clone ALL repos matching the `searchTerm` if they do not already exist on your local machine. If any given repo matching the `searchTerm` already exists on your local machine it will be cleaned and hard reset to origin/master.
-
 ### Create Repo
 
 ```

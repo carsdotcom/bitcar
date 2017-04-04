@@ -14,7 +14,6 @@ const getPaths = require('./lib/getPaths');
 const maybeClone = require('./lib/maybeClone');
 const maybePull = require('./lib/maybePull');
 const createRepo = require('./lib/createRepo');
-const forceLatest = require('./lib/forceLatest');
 const openInBrowser = require('./lib/openInBrowser');
 const status = require('./lib/status');
 
@@ -71,13 +70,6 @@ function router(options) {
                         confirmMessage: 'Are you sure you want check status on all of the above?',
                         errorMessage: 'Status all aborted',
                         handler: (r) => status(r)
-                    });
-                } else if (results.length && options['force-latest']) {
-                    return mapToHandler({
-                        results,
-                        confirmMessage: 'Are you sure you want clean and force a hard reset to all of the above?',
-                        errorMessage: 'Force latest aborted',
-                        handler: forceLatest
                     });
                 } else if (results.length > 1) {
                     resultPromise = inquirer.prompt([
