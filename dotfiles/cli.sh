@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 function bitcar_cli {
-    local workspace_dir target cmd nbin
+    local workspace_dir target cmd
     workspace_dir="${BITCAR_WORKSPACE_DIR:-"$HOME/bitcar-repos"}"
 
     if [ -z "$1" ]; then
@@ -10,13 +10,7 @@ function bitcar_cli {
 
     target="$HOME/.bitcar/.bitcar_target"
 
-    cmd=()
-    nbin="$(ls -d1 $HOME/n/n/versions/node/* | egrep '6\.\d\.\d' | tail -1 | tr -d '[:space:]')/bin/node"
-    if [[ -x "$nbin" ]]; then
-        cmd+=( "$nbin" "$(which bitcar)" "$@" );
-    else
-        cmd=("bitcar" "$@")
-    fi
+    cmd=("bitcar" "$@")
 
     if "${cmd[@]}"; then
 
