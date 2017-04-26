@@ -22,7 +22,7 @@ function bitcar_cli {
             fi
         fi
 
-        [ -f "$target" ] && rm "$target"
+        [ -f "$target" ] && rm -f "$target"
     fi
 
 }
