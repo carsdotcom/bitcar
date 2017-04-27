@@ -76,16 +76,25 @@ function getOwnRepos(config) {
 function getReposFromUsernames(config) {
     return Promise.map(config.usernames, (username) => {
         let reqUrl = `https://api.github.com/users/${username}/repos`;
-        return axios.get(reqUrl).then((res) => {
-            const sources = _.map(res.data, (item) => {
-                const result = {};
-                result.name = item.full_name;
-                result.clone = item.clone_url;
-                result.html = item.html_url;
-                return result;
+        function getPage(sources, url) {
+            return axios.get(url).then((res) => {
+                const all = sources.concat(_.map(res.data, (item) => {
+                    const result = {};
+                    result.name = item.full_name;
+                    result.clone = item.clone_url;
+                    result.html = item.html_url;
+                    return result;
+                }));
+                if (res.headers.link) {
+                    let linkHeader = parseLinkHeader(res.headers.link);
+                    if (linkHeader.next) {
+                        return getPage(all, linkHeader.next);
+                    }
+                }
+                return all;
             });
-            return sources;
-        });
+        }
+        return getPage([], reqUrl);
     }).reduce((sources, result) => {
         sources = sources.concat(result);
         return sources;
