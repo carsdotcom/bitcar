@@ -144,6 +144,9 @@ describe('the bitcar router', () => {
                     return router({ _: [ ], open: true })
                         .then((result) => {
                             expect(browser.open).to.have.been.calledWith('https://github.com/carsdotcom/bitcar');
+                        })
+                        .catch((err)=> {
+                            expect(err.message).to.contain('No results');
                         });
                 });
             });
@@ -238,7 +241,8 @@ describe('the bitcar router', () => {
                 .then(() => {
                     expect(drivers['bitbucket-server'].getConfiguredRepos).to.have.been.called;
                     expect(drivers.github.getConfiguredRepos).to.have.been.called;
-                });
+                })
+                .catch(()=> { });
         });
     });
     describe('create option', () => {
