@@ -3,7 +3,6 @@ const _ = require('lodash');
 const inquirer = require('inquirer');
 const path = require('path');
 const Promise = require('bluebird');
-const workspaceDir = require('./lib/workspaceDir');
 const output = require('./lib/output');
 const getSearchTerm = require('./lib/getSearchTerm');
 const mapToHandler = require('./lib/mapToHandler');
