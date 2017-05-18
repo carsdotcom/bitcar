@@ -4,6 +4,7 @@
 [![npm](https://img.shields.io/npm/dt/bitcar.svg)]()
 [![Travis](https://img.shields.io/travis/carsdotcom/bitcar.svg)]()
 [![GitHub stars](https://img.shields.io/github/stars/carsdotcom/bitcar.svg?style=social&label=Star)](https://github.com/carsdotcom/bitcar)
+[![Apache 2.0](https://img.shields.io/badge/license-apache--2.0-lightgrey.svg)](https://www.apache.org/licenses/LICENSE-2.0)
 
 > Seemlessly jump between repos from the command line.
 
