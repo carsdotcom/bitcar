@@ -68,7 +68,7 @@ function router(options) {
                         results,
                         confirmMessage: 'Are you sure you want check status on all of the above?',
                         errorMessage: 'Status all aborted',
-                        handler: (r) => status(r)
+                        handler: status
                     });
                 } else if (results.length > 1) {
                     resultPromise = inquirer.prompt([
