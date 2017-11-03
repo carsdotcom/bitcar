@@ -38,9 +38,9 @@
     "mkdirp": "^0.5.1",
     "omelette": "^0.3.1",
     "open": "0.0.5",
-    "rc": "^1.1.6",
+    "rc": "^1.2.2",
     "readdirp": "^2.1.0",
-    "simple-git": "^1.65.0"
+    "simple-git": "^1.80.1"
   },
   "devDependencies": {
     "chai": "^3.5.0",

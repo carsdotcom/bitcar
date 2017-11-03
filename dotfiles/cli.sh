@@ -23,6 +23,8 @@ function bitcar_cli {
         fi
 
         [ -f "$target" ] && rm -f "$target"
+    else
+        return 0
     fi
 
 }
