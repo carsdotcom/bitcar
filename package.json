@@ -14,7 +14,7 @@
     "lint": "./node_modules/.bin/eslint .",
     "test": "./node_modules/.bin/mocha \"test/**/*.spec.js\"",
     "watch": "npm run test -- --watch",
-    "changelog": "./node_modules/.bin/github-changes -o carsdotcom -r bitcar",
+    "changelog": "./node_modules/.bin/github-changes -o machellerogden -r bitcar",
     "generate-and-stage-changelog": "npm run changelog && git add -A",
     "coverage": "rm -rf coverage && node node_modules/.bin/istanbul --include-all-sources cover -x \"test/**/*.spec.js\" --dir=\"coverage\" --root=\"./\" node_modules/.bin/_mocha -- \"test/**/*.spec.js\"",
     "check-coverage": "npm run coverage && ./node_modules/.bin/istanbul check-coverage --root=\"./coverage\" --statement 60 --function 60 --branch 50"
