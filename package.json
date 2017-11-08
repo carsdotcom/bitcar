@@ -4,7 +4,7 @@
   "description": "Seamlessly jump between repos from the command line.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/carsdotcom/bitcar.git"
+    "url": "https://github.com/machellerogden/bitcar.git"
   },
   "main": "index.js",
   "bin": {
