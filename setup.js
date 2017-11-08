@@ -47,6 +47,16 @@ function setup() {
             when: (answers) => answers.drivers.indexOf('github') >= 0
         },
         {
+            type: 'list',
+            name: 'githubCloneUrl',
+            message: 'Would you like to use https or ssh for cloning github repos?',
+            choices: [
+                'ssh',
+                'https'
+            ],
+            when: (answers) => answers.drivers.indexOf('github') >= 0
+        },
+        {
             type: 'input',
             name: 'githubAccessToken',
             message: 'Please enter your github.com private access token (generate one at https://github.com/settings/tokens/new):',
@@ -95,6 +105,9 @@ source $HOME/.bitcar/completions.sh
 
             if (answers.drivers.indexOf('github') >= 0) {
                 let githubConfig = { type: 'github', host: 'github.com', accessToken: answers.githubAccessToken };
+                if (answers.githubCloneUrl) {
+                    githubConfig.cloneUrl = answers.githubCloneUrl;
+                }
                 if (answers.githubUsernames) {
                     githubConfig.usernames = answers.githubUsernames.split(',');
                 }
